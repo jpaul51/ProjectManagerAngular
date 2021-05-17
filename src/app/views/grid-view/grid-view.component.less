@@ -1,0 +1,43 @@
+table{
+    border-collapse:collapse;
+    border: solid #45576e 2px;
+    min-width: 100%;
+}
+td, th{
+    border: solid #36485f 1px;
+    min-width:200px;
+    padding:5px;
+}
+td{
+    font-size: var(--lumo-font-size-s);
+    color: #c3e0ed;
+}
+:host div {
+    padding-right:16px;
+    padding-left:16px;
+    height:100%;
+}
+:host {
+   
+    height:100%;
+}
+
+tr[class="active"]{
+    background-color: #273d5a;
+}
+
+label[part="label"]{
+    color: white
+}
+
+vaadin-button{
+    margin-right: 5px;
+}
+vaadin-button[theme~='primary']{
+    margin-right: 5px;
+
+    background-color: var(--_lumo-button-primary-background-color, var(--lumo-primary-color));
+    color: var(--_lumo-button-primary-color, var(--lumo-primary-contrast-color));
+    font-weight: 600;
+    min-width: calc(var(--lumo-button-size) * 2.5);
+}

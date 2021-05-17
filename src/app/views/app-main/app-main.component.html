@@ -1,0 +1,21 @@
+<div class="app-layout">
+
+    <vaadin-app-layout>
+        
+      
+        <div class="vertical-layout" slot="drawer" style="align-items: stretch; height: 100%;">
+            <h3 slot="navbar touch-optimized">Project Name</h3>
+            <vaadin-tabs orientation="vertical" slot="drawer">
+                <tab-component name="Profil" route="/profile"></tab-component>    
+                <tab-component name="Contact" route="/contact">                  
+                </tab-component>
+            </vaadin-tabs>
+        </div>
+        <div class="headbar">
+           <span  style='display: inline;'> <vaadin-drawer-toggle  slot="navbar touch-optimized"></vaadin-drawer-toggle> <h4 style='display: inline;'>App name</h4></span>
+        </div>
+        <div class="gridContent">
+            <split-view></split-view>
+        </div>
+    </vaadin-app-layout>
+</div>

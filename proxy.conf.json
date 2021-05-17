@@ -1,0 +1,8 @@
+{
+    "/v1/*": {
+        "target": "https://jonas-paul.com/",
+        "secure": true,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

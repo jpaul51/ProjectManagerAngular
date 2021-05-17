@@ -1,0 +1,50 @@
+.app-layout{
+    background-color: hsl(214deg 35% 21%);
+    height:100vh;
+    width:100%;
+    font-family: var(--lumo-font-family);
+
+}
+
+.gridContent{
+    height:95%;
+}
+
+vaadin-vertical-layout{
+    border-right: 1px solid white//var(--lumo-contrast-10pct);
+
+  }
+ 
+  .vertical-layout{
+    border-right: solid 2px #36485f;
+    overflow: hidden;
+}
+
+vaadin-drawer-toggle:hover{
+    cursor: pointer;
+}
+
+vaadin-tab{
+    color: white;
+
+}
+
+vaadin-tab[aria-selected = "true"]{
+    background-color:#273d5a;
+    color:#66a8e7;
+}
+
+.headbar{
+    background-color: #304a69b6;
+}
+ div[slot="drawer"] h3{
+
+    font-size: var(--lumo-font-size-xl);
+    font-weight: 600;
+    padding: 7px;
+    border-bottom:solid 2px #36485f;
+}
+
+vaadin-drawer-toggle{
+    margin: 0px;
+}

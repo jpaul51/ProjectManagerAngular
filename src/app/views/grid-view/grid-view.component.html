@@ -1,0 +1,14 @@
+<div>
+    <vaadin-button (click)='clickAdd()' theme='primary'>+</vaadin-button>
+    <table>
+        <tr>
+            <th>col1</th>
+            <th>col2</th>
+        </tr>
+        <tr *ngFor="let emp of Employee; let i = index" (click)="clickRow(i)" [class.active]="i == HighlightRow">
+            <td>Hello world
+            <td>b</td>
+        </tr>
+
+    </table>
+</div>
