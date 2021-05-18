@@ -1,8 +1,11 @@
 {
-    "/v1/*": {
+    "/api/*": {
         "target": "https://jonas-paul.com/",
-        "secure": true,
+        "secure": false,
         "logLevel": "debug",
-        "changeOrigin": true
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+          }
     }
 }

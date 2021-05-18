@@ -11,7 +11,7 @@ export class ApplicationService {
 
   token: any;
 
-  appConfigListPath = "applicationDescriptor"
+  private appConfigListPath = "applicationDescriptor"
 
   constructor(private http: HttpClient) { }
 
@@ -19,34 +19,44 @@ export class ApplicationService {
 
   login() {
 
-  
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*'
+        'Content-Type': 'application/json'
+
       })
     }
 
-   
 
-    this.http.post(serverApi+"login", loginData, httpOptions).subscribe(next => {
-      this.token = next;
-      console.log("token");
+    var url = serverApi + "loginRemote";
+    console.log(url)
+    this.http.post(url, loginData, httpOptions).subscribe(next => {
+
+      var response: token = next;
+      this.token = response.value;
+
     });
   }
 
-  appConfigList() : Application[] {
+  appConfigList(): Application[] {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        token: this.token
-      })
+    console.log("get app list")
+    if (this.apps == null || this.apps.length == 0) {
+      console.log("token: " + this.token)
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          token: this.token
+        })
+      }
+      this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(map(data => <Application[]>data)).subscribe(data => this.apps = data);
     }
-     this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(map(data => <Application[]>data)).subscribe(data => this.apps = data);
 
-     return this.apps
+    return this.apps
   }
 
+}
+
+class token {
+  value?: string
 }

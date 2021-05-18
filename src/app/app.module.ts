@@ -11,11 +11,13 @@ import { GridViewComponent } from './views/grid-view/grid-view.component';
 import { SplitViewComponent } from './views/split-view/split-view.component';
 import { DetailViewComponent } from './views/detail-view/detail-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  { path: 'contact', component: TabComponent },
-  { path: 'profile', component: AppMainComponent },
+  { path: 'home', component: TabComponent },
+  { path: 'project', component: AppMainComponent },
+  { path: 'interventions', component: AppMainComponent },
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     TabComponent,
     GridViewComponent,
     SplitViewComponent,
-    DetailViewComponent
+    DetailViewComponent,
+    LoginComponent
     
     
   ],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InternalStateService, State } from 'src/app/internalServices/internal-state-service.service';
+import { Application } from 'src/app/model/application';
+import { ApplicationService } from 'src/app/services/application-service.service';
 // import '../theme/customTextField.js'
 
 @Component({
@@ -14,8 +16,9 @@ export class GridViewComponent implements OnInit {
   Employee: any = [{ "name": "plop", "age": "25" }, { "name": "plopd", "age": "26" }];
   isAdd: boolean = false;
   columns: any;
+  appList: Application[] = Array();
 
-  constructor(private internalService: InternalStateService) {
+  constructor(private internalService: InternalStateService, private appService : ApplicationService) {
     this.ClickedRow = function (index) {
       this.HighlightRow = index;
     }
@@ -27,6 +30,8 @@ export class GridViewComponent implements OnInit {
         this.HighlightRow = -1;
       }
     })
+
+    this.appList = this.appService.appConfigList()
   }
 
 

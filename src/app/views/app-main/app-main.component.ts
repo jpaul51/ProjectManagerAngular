@@ -24,6 +24,8 @@ import '@vaadin/vaadin-lumo-styles/style.js';
 import '@vaadin/vaadin-lumo-styles/typography.js';
 import '@vaadin/vaadin-lumo-styles/icons.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-login/vaadin-login-overlay.js';
+
 
 // Import the <custom-style> element from Polymer and include
 // the style sheets in the global scope
