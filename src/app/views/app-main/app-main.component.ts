@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {AppLayoutElement} from '@vaadin/vaadin-app-layout'
-import {TabsElement} from '@vaadin/vaadin-tabs'
+import { Component, OnInit, Type } from '@angular/core';
+import { AppLayoutElement } from '@vaadin/vaadin-app-layout'
+import { TabsElement } from '@vaadin/vaadin-tabs'
 import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
@@ -30,6 +30,10 @@ import '@vaadin/vaadin-login/vaadin-login-overlay.js';
 // Import the <custom-style> element from Polymer and include
 // the style sheets in the global scope
 import '@polymer/polymer/lib/elements/custom-style.js';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationService } from 'src/app/services/application-service.service';
+import { Application } from 'src/app/model/application';
+import { TabComponent } from '../tab/tab.component';
 
 @Component({
   selector: 'app-app-main',
@@ -38,9 +42,65 @@ import '@polymer/polymer/lib/elements/custom-style.js';
 })
 export class AppMainComponent implements OnInit {
 
-  constructor() { }
+  showSplitView = false;
+
+  appList: Application[];
+
+  constructor(private appService: ApplicationService, private router: Router) { }
 
   ngOnInit(): void {
+
+
+    this.appService.currentRoute.subscribe(currentRoute => {
+      if (currentRoute === "/home") {
+        this.showSplitView = false;
+      } else {
+        this.showSplitView = true;
+      }
+    })
+
+    const token = localStorage.getItem("token");
+    console.log("TOK: " + token)
+    if (typeof token == 'undefined') {
+      this.appService.login();
+    }
+    else {
+      this.appService.appConfigList();
+
+      this.appService.apps.subscribe(next => {
+        this.appList = next;
+        console.log(next)
+        var pathConfig: Array<Object> = new Array();
+
+        this.appList.forEach(app => {
+          let item = new PathConfig();
+          if (typeof app.appPathLoc !== 'undefined'&& app.appPathLoc != null && app.appPathLoc.length > 0) {
+            item.path = app.appPathLoc;
+            item.component = AppMainComponent;
+            pathConfig.push(item);
+          }
+        });
+
+        let homeRoute = new PathConfig()
+        homeRoute.path = "home";
+        homeRoute.component = TabComponent;
+
+        pathConfig.push(homeRoute);
+
+        console.log(pathConfig)
+
+        this.router.resetConfig(pathConfig);
+
+      })
+
+    }
+
   }
 
+
+
+}
+class PathConfig {
+  path: string
+  component: Type<any>
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { ApplicationService } from 'src/app/services/application-service.service';
 
 @Component({
   selector: 'tab-component',
@@ -13,10 +14,11 @@ export class TabComponent implements OnInit {
 
   selected : boolean = false
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private appService : ApplicationService) { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
           // Show loading indicator
+          appService.currentRoute.next(event.url);
       }
 
       if (event instanceof NavigationEnd) {

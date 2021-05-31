@@ -28,7 +28,7 @@ const routes: Routes = [
     GridViewComponent,
     SplitViewComponent,
     DetailViewComponent,
-    LoginComponent
+    LoginComponent,
     
     
   ],

@@ -31,7 +31,6 @@ export class GridViewComponent implements OnInit {
       }
     })
 
-    this.appList = this.appService.appConfigList()
   }
 
 

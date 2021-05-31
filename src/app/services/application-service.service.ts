@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { serverApi, loginData } from '../../environments/environment'
 import { Application } from '../model/application';
 import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,15 @@ export class ApplicationService {
 
   token: any;
 
-  private appConfigListPath = "applicationDescriptor"
+  private appConfigListPath = "v1/applicationDescriptor"
 
   constructor(private http: HttpClient) { }
 
-  apps: Application[]
+  apps: Subject<Application[]> = new Subject()
 
-  login() {
+  currentRoute = new Subject();
+
+  login(callback? : Function) {
 
 
     const httpOptions = {
@@ -30,33 +33,48 @@ export class ApplicationService {
 
     var url = serverApi + "loginRemote";
     console.log(url)
-    this.http.post(url, loginData, httpOptions).subscribe(next => {
 
-      var response: token = next;
-      this.token = response.value;
+    return this.http.post(url, loginData, httpOptions).subscribe(data => {
+      console.log("DATA");
+
+      console.log(data);
+      localStorage.setItem('user', data["user"]);
+      localStorage.setItem('token', data["value"]);
+      this.login = data["user"];
+      this.token = data["token"];
+
+      callback.call(this);
 
     });
+
+
   }
 
-  appConfigList(): Application[] {
+
+
+
+  appConfigList() {
 
     console.log("get app list")
-    if (this.apps == null || this.apps.length == 0) {
-      console.log("token: " + this.token)
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          token: this.token
-        })
-      }
-      this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(map(data => <Application[]>data)).subscribe(data => this.apps = data);
-    }
 
-    return this.apps
+    let token = localStorage.getItem("token")
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        token: token
+      })
+    }
+    console.log(serverApi + this.appConfigListPath)
+    this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(map(data => <Application[]>data))
+      .subscribe(data => this.apps.next(data),
+        error => {
+          if(error.status == 404){
+           this.login(this.appConfigList);
+          }
+
+        });
+
+
   }
 
-}
-
-class token {
-  value?: string
 }

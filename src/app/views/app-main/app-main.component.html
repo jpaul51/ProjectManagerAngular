@@ -7,15 +7,14 @@
             <h3 slot="navbar touch-optimized">Project Name</h3>
             <vaadin-tabs orientation="vertical" slot="drawer">
                 <tab-component name="Home" route="/home"></tab-component>    
-                <tab-component name="Project" route="/project"></tab-component>    
-                <tab-component name="Interventions" route="/interventions">                  
-                </tab-component>
+                <tab-component *ngFor="let app of appList" name={{app.appLabelKey}} route="{{app.appPathLoc}}"></tab-component>    
+
             </vaadin-tabs>
         </div>
         <div class="headbar">
            <span  style='display: inline;'> <vaadin-drawer-toggle  slot="navbar touch-optimized"></vaadin-drawer-toggle> <h4 style='display: inline;'>App name</h4></span>
         </div>
-        <div class="gridContent">
+        <div *ngIf='showSplitView'  class="gridContent">
             <split-view></split-view>
         </div>
     </vaadin-app-layout>
