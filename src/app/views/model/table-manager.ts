@@ -1,4 +1,4 @@
-import { ResultView } from "../views/result-view";
+import { ResultView } from "../result-view";
 
 export class TableManager {
 

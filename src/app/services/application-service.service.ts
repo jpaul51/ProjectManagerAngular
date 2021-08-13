@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { serverApi, loginData } from '../../environments/environment'
-import { Application } from '../model/application';
+import { Application } from '../views/model/application';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { TranslationServiceService } from './translation-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApplicationService {
 
   private appConfigListPath = "v1/applicationDescriptor"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private translationService : TranslationServiceService) { }
 
   apps: Subject<Application[]> = new Subject()
 
@@ -42,8 +43,10 @@ export class ApplicationService {
       localStorage.setItem('token', data["value"]);
       this.login = data["user"];
       this.token = data["token"];
-
-      callback.call(this);
+      if(callback != null){
+        callback.call(this);
+      }
+      
 
     });
 
@@ -74,7 +77,7 @@ export class ApplicationService {
 
         });
 
-
+        this.translationService.fetchTranslations();
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Application } from 'src/app/model/application';
+import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { InternalStateService, State } from '../../internalServices/internal-state-service.service'
 import { GridViewComponent } from '../grid-view/grid-view.component'

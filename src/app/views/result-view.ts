@@ -1,4 +1,4 @@
-import { FieldDetail } from "../model/field-detail";
+import { FieldDetail } from "./model/field-detail";
 
 export class ResultView {
 

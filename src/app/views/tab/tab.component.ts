@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application-service.service';
+import { TranslationServiceService } from 'src/app/services/translation-service.service';
 
 @Component({
   selector: 'tab-component',
@@ -11,10 +12,11 @@ export class TabComponent implements OnInit {
 
   @Input ()route: string;
   @Input ()name: string;
+  label : string;
 
   selected : boolean = false
 
-  constructor(private router: Router, private appService : ApplicationService) { 
+  constructor(private router: Router, private appService : ApplicationService, private translationService : TranslationServiceService) { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
           // Show loading indicator
@@ -42,7 +44,7 @@ export class TabComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.label = this.translationService.translateKey(this.name);
 
   }
 

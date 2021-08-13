@@ -11,7 +11,7 @@ import { GridViewComponent } from './views/grid-view/grid-view.component';
 import { SplitViewComponent } from './views/split-view/split-view.component';
 import { DetailViewComponent } from './views/detail-view/detail-view.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './views/login/login.component';
 
 
 const routes: Routes = [

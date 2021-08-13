@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InternalStateService, State } from 'src/app/internalServices/internal-state-service.service';
-import { Application } from 'src/app/model/application';
+import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
 // import '../theme/customTextField.js'
 
