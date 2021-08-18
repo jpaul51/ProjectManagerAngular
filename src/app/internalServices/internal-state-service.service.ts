@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Application } from '../views/model/application';
 
 
@@ -8,13 +8,15 @@ import { Application } from '../views/model/application';
 })
 export class InternalStateService {
 
-  currentState: Subject<State> 
+  currentState: BehaviorSubject<State> 
 
-  currentApp: Application
+  currentApp: Subject<Application> = new Subject
+
+  currentRoute = new Subject();
 
   constructor() {
-    this.currentState = new Subject();
-   this.currentState.next( State.LOAD)
+    this.currentState = new BehaviorSubject(State.LOAD);
+    this.currentState.next( State.LOAD)
 
    }
 
@@ -23,6 +25,14 @@ export class InternalStateService {
     return this.currentState.asObservable();
   }
 
+  setCurrentApp(app : Application ){
+    console.log("Set next app")
+    this.currentApp.next(app);
+  }
+  getCurrentApp(){
+    return this.currentApp;
+  }
+  
 }
 
 

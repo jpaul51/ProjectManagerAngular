@@ -30,11 +30,12 @@ import '@vaadin/vaadin-login/vaadin-login-overlay.js';
 // Import the <custom-style> element from Polymer and include
 // the style sheets in the global scope
 import '@polymer/polymer/lib/elements/custom-style.js';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { Application } from 'src/app/views/model/application';
 import { TabComponent } from '../tab/tab.component';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
+import { InternalStateService } from 'src/app/internalServices/internal-state-service.service';
 
 @Component({
   selector: 'app-app-main',
@@ -47,12 +48,13 @@ export class AppMainComponent implements OnInit {
 
   appList: Application[];
 
-  constructor(private appService: ApplicationService, private router: Router, private translationService : TranslationServiceService) { }
+  constructor(private appService: ApplicationService, private router: Router, private translationService : TranslationServiceService,
+     private internalService: InternalStateService) { }
 
   ngOnInit(): void {
 
 
-    this.appService.currentRoute.subscribe(currentRoute => {
+    this.internalService.currentRoute.subscribe(currentRoute => {
       if (currentRoute === "/home") {
         this.showSplitView = false;
       } else {
@@ -74,6 +76,26 @@ export class AppMainComponent implements OnInit {
       this.buildRoutes();
 
     }
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+          // Show loading indicator
+          console.log("update route")
+          this.internalService.currentRoute.next(event.url);
+      }
+
+      if (event instanceof NavigationEnd) {
+          // Hide loading indicator
+         
+      }
+
+      if (event instanceof NavigationError) {
+          // Hide loading indicator
+
+          // Present error to user
+          console.log(event.error);
+      }
+  });
 
   }
 

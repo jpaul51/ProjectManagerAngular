@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { serverApi, loginData } from '../../environments/environment'
 import { Application } from '../views/model/application';
-import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { map, timeout } from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { TranslationServiceService } from './translation-service.service';
 
 @Injectable({
@@ -17,9 +17,7 @@ export class ApplicationService {
 
   constructor(private http: HttpClient, private translationService : TranslationServiceService) { }
 
-  apps: Subject<Application[]> = new Subject()
-
-  currentRoute = new Subject();
+  apps: BehaviorSubject<Application[]> = new BehaviorSubject([])
 
   login(callback? : Function) {
 
@@ -68,16 +66,21 @@ export class ApplicationService {
       })
     }
     console.log(serverApi + this.appConfigListPath)
-    this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(map(data => <Application[]>data))
+    this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(timeout(2000), map(data => <Application[]>data))
       .subscribe(data => this.apps.next(data),
         error => {
-          if(error.status == 404){
+          console.log("Error status: "+ error.status)
+          // if(error.status == 404 || error.status == 302){
            this.login(this.appConfigList);
-          }
+          // }
 
         });
 
         this.translationService.fetchTranslations();
+  }
+
+  getAll(){
+    //TODO
   }
 
 }
