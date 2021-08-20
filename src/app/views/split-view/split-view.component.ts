@@ -6,6 +6,7 @@ import { InternalStateService, State } from '../../internalServices/internal-sta
 import { GridViewComponent } from '../grid-view/grid-view.component'
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'split-view',
@@ -19,10 +20,9 @@ export class SplitViewComponent implements OnInit {
   isEditoropened: boolean = false;
 
   appConfigList: Application[]
+  currentData : any;
 
   constructor(private internalService: InternalStateService, private appService: ApplicationService) { 
-
-
   }
 
   ngOnInit(): void {
@@ -30,6 +30,8 @@ export class SplitViewComponent implements OnInit {
     this.currentState.subscribe(next => {
       this.isEditoropened = (next == State.ADD || next == State.EDIT);
     })
+
+    //Route change
     this.internalService.currentRoute.subscribe((next : string) => {
       console.log("change route: "+next)
       let apps  = this.appService.apps.getValue()
@@ -37,6 +39,18 @@ export class SplitViewComponent implements OnInit {
 
         if(app.appPathLoc != null && next.endsWith(app.appPathLoc) ){
           this.internalService.setCurrentApp(app)
+
+          this.internalService.getCurrentApp().pipe(take(1)).subscribe(currentApp =>{
+            let dataPromise =  this.appService.getPage(currentApp.mainEntity+"Descriptor");
+            dataPromise.then(data =>{
+              console.log("update data")
+              console.log(currentApp)
+              this.currentData = data;
+            })
+          })
+
+          
+
         }
         
       })

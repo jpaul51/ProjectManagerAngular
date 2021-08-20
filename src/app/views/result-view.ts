@@ -2,7 +2,7 @@ import { FieldDetail } from "./model/field-detail";
 
 export class ResultView {
 
-    columns: FieldDetail[]
-    quickSearchList : FieldDetail[]
+    columns: String[]
+    quickSearchList : String[]
 
 }
