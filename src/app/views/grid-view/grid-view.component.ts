@@ -4,6 +4,7 @@ import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
 import { take } from 'rxjs/operators';
+import { Subscriber } from 'rxjs';
 // import '../theme/customTextField.js'
 
 @Component({
@@ -33,15 +34,17 @@ export class GridViewComponent implements OnInit,  OnChanges  {
 
     console.log("CHANGES !")
     this.internalService.getCurrentApp().pipe(take(1)).subscribe(app=>{
-      console.log("CURRENT APP:")
+      console.log("CURRENT APP:" + app.appLabelKey)
       this.displayedColumnsName = app.tlManager.defaultResultView.columns;
      
       
     })
-    this.displayedData = this.data.content;
+    if(this.data != null){
+      this.displayedData = this.data.content;
 
-    console.log(this.displayedColumnsName)
-    console.log(this.displayedData)
+      console.log(this.displayedColumnsName)
+      console.log(this.displayedData)
+    }
 
   }
 
@@ -57,7 +60,7 @@ export class GridViewComponent implements OnInit,  OnChanges  {
     })
 
     this.internalService.getCurrentApp().subscribe(app =>{
-
+      console.log("update columns");
       if(app != null){
 
         var cols =  this.getResultFields(app);

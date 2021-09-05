@@ -55,6 +55,7 @@ export class AppMainComponent implements OnInit {
 
 
     this.internalService.currentRoute.subscribe(currentRoute => {
+      console.log("switch route");
       if (currentRoute === "/home") {
         this.showSplitView = false;
       } else {

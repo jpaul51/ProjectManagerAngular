@@ -35,9 +35,9 @@ export class ApplicationService {
     console.log(url)
 
     return this.http.post(url, loginData, httpOptions).subscribe(data => {
-      console.log("DATA");
 
-      console.log(data);
+      console.log("login");
+
       localStorage.setItem('user', data["user"]);
       localStorage.setItem('token', data["value"]);
       this.login = data["user"];
@@ -63,7 +63,9 @@ export class ApplicationService {
     const httpOptions = this.getHeaders();
    
     this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(timeout(2000), map(data => <Application[]>data))
-      .subscribe(data => this.apps.next(data),
+      .subscribe(data => {
+        this.apps.next(data); console.log("app config list")
+      },
         error => {
           console.log("Error status: "+ error.status)
           // if(error.status == 404 || error.status == 302){

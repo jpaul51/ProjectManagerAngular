@@ -12,7 +12,7 @@ export class InternalStateService {
 
   currentApp: Subject<Application> = new Subject
 
-  currentRoute = new Subject();
+  currentRoute = new Subject<string>();
 
   constructor() {
     this.currentState = new BehaviorSubject(State.LOAD);
