@@ -12,7 +12,7 @@ import { Subscriber } from 'rxjs';
   templateUrl: './grid-view.component.html',
   styleUrls: ['./grid-view.component.less']
 })
-export class GridViewComponent implements OnInit,  OnChanges  {
+export class GridViewComponent implements OnInit, OnChanges {
 
   ClickedRow: any;
   HighlightRow: Number = -1;
@@ -20,32 +20,28 @@ export class GridViewComponent implements OnInit,  OnChanges  {
   columns: any = [];
   appList: Application[] = Array();
   @Input() data: any = [];
+  @Input() currentApp: Application;
 
   displayedData: any = [];
   displayedColumnsName = [];
 
 
-  constructor(private internalService: InternalStateService, private appService : ApplicationService, private translationService : TranslationServiceService) {
+  constructor(private internalService: InternalStateService, private appService: ApplicationService, private translationService: TranslationServiceService) {
     this.ClickedRow = function (index) {
       this.HighlightRow = index;
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
 
-    console.log("CHANGES !")
-    this.internalService.getCurrentApp().pipe(take(1)).subscribe(app=>{
-      console.log("CURRENT APP:" + app.appLabelKey)
-      this.displayedColumnsName = app.tlManager.defaultResultView.columns;
-     
-      
-    })
-    if(this.data != null){
-      this.displayedData = this.data.content;
+    for (let propName in changes) {
 
-      console.log(this.displayedColumnsName)
-      console.log(this.displayedData)
+      if (propName == "currentApp" && this.currentApp != null) {
+        this.displayedColumnsName = this.currentApp.tlManager.defaultResultView.columns;
+      }
+      else if (propName == "data" && this.data != null) {
+        this.displayedData = this.data.content;
+      }
     }
-
   }
 
   private getResultFields(app: Application): any[] {
@@ -53,27 +49,24 @@ export class GridViewComponent implements OnInit,  OnChanges  {
   }
 
   ngOnInit(): void {
-    this.internalService.stateObservable().subscribe(next =>{
-      if(next == State.LOAD){
+    this.internalService.stateObservable().subscribe(next => {
+      if (next == State.LOAD) {
         this.HighlightRow = -1;
       }
     })
 
-    this.internalService.getCurrentApp().subscribe(app =>{
-      console.log("update columns");
-      if(app != null){
+    this.internalService.currentApp.subscribe(app => {
 
-        var cols =  this.getResultFields(app);
-        if(cols.length == 0){
+      if (app != null) {
+
+        var cols = this.getResultFields(app);
+        if (cols.length == 0) {
           cols = app.allFields;
         }
         this.columns.length = 0;
-        cols.forEach(col =>{
+        cols.forEach(col => {
           this.columns.push(this.translationService.translateKey(col.translationKey));
         })
-
-        
-        
       }
     });
 
@@ -94,6 +87,14 @@ export class GridViewComponent implements OnInit,  OnChanges  {
   }
 
 
+  formatData(item) {
+    if (typeof item === 'string' || item instanceof String) {
+      return item;
+    }
+    else {
+      return item.label;
+    }
 
+  }
 
 }

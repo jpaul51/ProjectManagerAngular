@@ -55,7 +55,6 @@ export class AppMainComponent implements OnInit {
 
 
     this.internalService.currentRoute.subscribe(currentRoute => {
-      console.log("switch route");
       if (currentRoute === "/home") {
         this.showSplitView = false;
       } else {
@@ -64,13 +63,10 @@ export class AppMainComponent implements OnInit {
     })
 
     const token = localStorage.getItem("token");
-    console.log("TOK: " + token)
     if (typeof token == 'undefined' || token == null) {
-      console.log("login")
       this.appService.login();
     }
     else {
-      console.log("app list")
 
       this.appService.appConfigList();
 
@@ -81,7 +77,6 @@ export class AppMainComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
           // Show loading indicator
-          console.log("update route")
           this.internalService.currentRoute.next(event.url);
       }
 
@@ -94,7 +89,6 @@ export class AppMainComponent implements OnInit {
           // Hide loading indicator
 
           // Present error to user
-          console.log(event.error);
       }
   });
 
@@ -104,10 +98,8 @@ export class AppMainComponent implements OnInit {
 
 
   private buildRoutes() {
-    console.log("build routes")
     this.appService.apps.subscribe(next => {
       this.appList = next;
-      console.log(next);
       var pathConfig: Array<Object> = new Array();
 
       this.appList.forEach(app => {

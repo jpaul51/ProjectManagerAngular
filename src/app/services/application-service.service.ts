@@ -16,11 +16,11 @@ export class ApplicationService {
   private appConfigListPath = "v1/applicationDescriptor"
   private appGetPagePath = "v1/applicationPage"
 
-  constructor(private http: HttpClient, private translationService : TranslationServiceService) { }
+  constructor(private http: HttpClient, private translationService: TranslationServiceService) { }
 
   apps: BehaviorSubject<Application[]> = new BehaviorSubject([])
 
-  login(callback? : Function) {
+  login(callback?: Function) {
 
 
     const httpOptions = {
@@ -32,51 +32,42 @@ export class ApplicationService {
 
 
     var url = serverApi + "loginRemote";
-    console.log(url)
 
     return this.http.post(url, loginData, httpOptions).subscribe(data => {
-
-      console.log("login");
 
       localStorage.setItem('user', data["user"]);
       localStorage.setItem('token', data["value"]);
       this.login = data["user"];
       this.token = data["token"];
-      if(callback != null){
+      if (callback != null) {
         callback.call(this);
       }
-      
+
 
     });
 
 
   }
 
-
-
-
-
   appConfigList() {
 
-    console.log("get app list")
-
     const httpOptions = this.getHeaders();
-   
+
     this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(timeout(2000), map(data => <Application[]>data))
       .subscribe(data => {
-        this.apps.next(data); console.log("app config list")
+        this.apps.next(data);
       },
         error => {
-          console.log("Error status: "+ error.status)
+          console.log("Error status: " + error.status)
           // if(error.status == 404 || error.status == 302){
-           this.login(this.appConfigList);
+          this.login(this.appConfigList);
           // }
 
         });
 
-        this.translationService.fetchTranslations();
+    this.translationService.fetchTranslations();
   }
-  
+
 
   private getHeaders() {
     let token = localStorage.getItem("token");
@@ -89,19 +80,12 @@ export class ApplicationService {
     return httpOptions;
   }
 
-  getPage(descriptor, filter = "", pageIndex = 0, pageSize = 10){
+  getPage(descriptor, filter = "", pageIndex = 0, pageSize = 10) {
     const httpOptions = this.getHeaders();
-   console.log(serverApi + this.appGetPagePath +"?"+descriptor+"&pageIndex="+pageIndex+"&pageSize="+pageSize+"&filter="+filter)
-    return this.http.get(serverApi + this.appGetPagePath +"?descriptor="+descriptor+"&pageIndex="+pageIndex+"&pageSize="+pageSize+"&filter="+filter, httpOptions)
-    .pipe(timeout(2000))
-    .toPromise();
-      // .subscribe(data =>{
-      //   console.log(data)
-      // },
-      //   error => {
-      //     console.log("Error status: "+ error.status)
+    return this.http.get(serverApi + this.appGetPagePath + "?descriptor=" + descriptor + "&pageIndex=" + pageIndex + "&pageSize=" + pageSize + "&filter=" + filter, httpOptions)
+      .pipe(timeout(2000))
+      .toPromise();
 
-      //   });
   }
 
 }

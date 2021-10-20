@@ -21,54 +21,47 @@ export class SplitViewComponent implements OnInit {
   isEditoropened: boolean = false;
 
   appConfigList: Application[]
-  currentData : any;
+  currentData: any;
+  currentApp: Application;
 
-  constructor(private internalService: InternalStateService, private appService: ApplicationService) { 
-    console.log("construct splitview");
+  constructor(private internalService: InternalStateService, private appService: ApplicationService) {
+
+    this.subscribers.route = this.internalService.currentRoute.subscribe((next: string) => {
+      this.currentApp = this.loadApp(next);
+
+      if (this.currentApp != null) {
+        this.loadData(this.currentApp);
+      }
+    });
+
   }
 
   ngOnInit(): void {
-    console.log("init splitview");
     this.currentState = this.internalService.stateObservable();
     this.currentState.subscribe(next => {
       this.isEditoropened = (next == State.ADD || next == State.EDIT);
     })
 
-    console.log( this.internalService.currentRoute)
-
-    //Route change
-     this.subscribers.route = this.internalService.currentRoute.subscribe((next : string) => {
-      this.loadApp(next);
-    });
-
-    //App change
-    this.subscribers.app =this.internalService.getCurrentApp().pipe(take(1)).subscribe(currentApp =>{
-      this.loadData(currentApp);
-    });
-
   }
 
 
-  private loadApp(next: string) {
-    console.log("load app: " + next);
+  private loadApp(next: string): Application {
     let apps = this.appService.apps.getValue();
+    let currentApp: Application;
     apps.forEach(app => {
 
       if (app.appPathLoc != null && next.endsWith(app.appPathLoc)) {
-        console.log("update app");
         //trigger app change
         this.internalService.setCurrentApp(app);
-
+        currentApp = app;
       }
     });
+    return currentApp;
   }
 
   private loadData(currentApp: Application) {
-    console.log("app subscription");
     let dataPromise = this.appService.getPage(currentApp.mainEntity + "Descriptor");
     dataPromise.then(data => {
-      console.log("update data");
-      console.log(currentApp);
       this.currentData = data;
     });
   }

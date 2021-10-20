@@ -9,14 +9,15 @@ import { ApplicationService } from 'src/app/services/application-service.service
 })
 export class HomeViewComponent implements OnInit {
 
-  constructor(private internalService: InternalStateService, private appService: ApplicationService) { }
+  constructor(private internalService: InternalStateService, private appService: ApplicationService) {
+  }
 
   ngOnInit(): void {
   }
 
   load() {
 
-    this.internalService.apps = this.appService.appConfigList();
+    // this.internalService.apps = this.appService.appConfigList();
   }
 
 }

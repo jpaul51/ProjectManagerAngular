@@ -7,7 +7,7 @@
             
         </tr>
         <tr *ngFor="let displayable of displayedData; let i = index" (click)="clickRow(i)" [class.active]="i == HighlightRow">
-            <td *ngFor="let col of displayedColumnsName;">{{displayable[col]}}</td>
+            <td *ngFor="let col of displayedColumnsName;">{{displayedData[i][col.name]}}</td>
 
         </tr>
 
