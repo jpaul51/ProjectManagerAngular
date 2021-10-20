@@ -88,7 +88,7 @@ export class GridViewComponent implements OnInit, OnChanges {
 
 
   formatData(item) {
-    if (typeof item === 'string' || item instanceof String) {
+    if (typeof item === 'string' || item instanceof String || item == null) {
       return item;
     }
     else {

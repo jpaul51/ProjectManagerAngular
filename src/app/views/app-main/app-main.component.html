@@ -19,7 +19,7 @@
         <div [ngClass]="{'hidden': !showSplitView}" class="gridContent">
             <split-view></split-view>
         </div>
-
+        <home-view [ngClass]="{'hidden': showSplitView}"></home-view>
     </vaadin-app-layout>
 
 </div>

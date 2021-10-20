@@ -12,6 +12,8 @@ import { SplitViewComponent } from './views/split-view/split-view.component';
 import { DetailViewComponent } from './views/detail-view/detail-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './views/login/login.component';
+import { HomeViewComponent } from './views/home-view/home-view.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 
 const routes: Routes = [
@@ -29,15 +31,17 @@ const routes: Routes = [
     SplitViewComponent,
     DetailViewComponent,
     LoginComponent,
-    
-    
+    HomeViewComponent,
+    InputTextComponent
+
+
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule
-    
-    
+
+
 
   ],
   exports: [

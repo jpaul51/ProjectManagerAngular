@@ -1,13 +1,14 @@
-<div  >
+<div>
     <!--  ngIf='appList.length > 0'-->
     <vaadin-button (click)='clickAdd()' theme='primary'>+</vaadin-button>
     <table>
         <tr>
             <th *ngFor="let col of columns;">{{col}}</th>
-            
+
         </tr>
-        <tr *ngFor="let displayable of displayedData; let i = index" (click)="clickRow(i)" [class.active]="i == HighlightRow">
-            <td *ngFor="let col of displayedColumnsName;">{{displayedData[i][col.name]}}</td>
+        <tr *ngFor="let displayable of displayedData; let i = index" (click)="clickRow(i)"
+            [class.active]="i == HighlightRow">
+            <td *ngFor="let col of displayedColumnsName;">{{formatData(displayedData[i][col.name])}}</td>
 
         </tr>
 
