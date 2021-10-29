@@ -1,0 +1,8 @@
+<span [ngSwitch]="fieldType">
+
+    <input-text [value]='value' [label]='label' *ngSwitchCase='fieldTypeEnum.TEXT_INPUT'></input-text>
+    <input-select [value]='value' [label]='label' *ngSwitchCase='fieldTypeEnum.SELECT'></input-select>
+
+    <input-text [value]='value' [label]='label' *ngSwitchDefault='fieldTypeEnum.TEXT_INPUT'></input-text>
+
+</span>

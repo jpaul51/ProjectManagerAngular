@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './views/login/login.component';
 import { HomeViewComponent } from './views/home-view/home-view.component';
 import { InputTextComponent } from './components/formComponents/input-text/input-text.component';
+import { AbstractInputComponent } from './components/formComponents/abstract-input/abstract-input.component';
+import { InputSelectComponent } from './components/formComponents/input-select/input-select.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,9 @@ const routes: Routes = [
     DetailViewComponent,
     LoginComponent,
     HomeViewComponent,
-    InputTextComponent
+    InputTextComponent,
+    AbstractInputComponent,
+    InputSelectComponent
 
 
   ],

@@ -25,9 +25,6 @@ export class DetailViewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.app)
-    console.log(this.id)
-
     for (let propName in changes) {
 
       if (propName == "app" && this.app != null) {

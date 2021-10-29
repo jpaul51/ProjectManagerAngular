@@ -29,7 +29,7 @@ export class GridViewComponent implements OnInit, OnChanges {
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
-
+ 
     for (let propName in changes) {
 
       if (propName == "currentApp" && this.currentApp != null) {
@@ -39,6 +39,7 @@ export class GridViewComponent implements OnInit, OnChanges {
         this.displayedData = this.data.content;
       }
     }
+
   }
 
   private getResultFields(app: Application): any[] {
@@ -66,9 +67,6 @@ export class GridViewComponent implements OnInit, OnChanges {
         })
       }
     });
-
-
-
   }
 
 
