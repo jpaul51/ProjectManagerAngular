@@ -33,7 +33,7 @@ import '@polymer/polymer/lib/elements/custom-style.js';
 import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { Application } from 'src/app/views/model/application';
-import { TabComponent } from '../tab/tab.component';
+import { TabComponent } from '../../components/tab/tab.component';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
 import { InternalStateService } from 'src/app/internalServices/internal-state-service.service';
 
@@ -48,8 +48,8 @@ export class AppMainComponent implements OnInit {
 
   appList: Application[];
 
-  constructor(private appService: ApplicationService, private router: Router, private translationService : TranslationServiceService,
-     private internalService: InternalStateService) { }
+  constructor(private appService: ApplicationService, private router: Router, private translationService: TranslationServiceService,
+    private internalService: InternalStateService) { }
 
   ngOnInit(): void {
 
@@ -76,21 +76,21 @@ export class AppMainComponent implements OnInit {
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-          // Show loading indicator
-          this.internalService.currentRoute.next(event.url);
+        // Show loading indicator
+        this.internalService.currentRoute.next(event.url);
       }
 
       if (event instanceof NavigationEnd) {
-          // Hide loading indicator
-         
+        // Hide loading indicator
+
       }
 
       if (event instanceof NavigationError) {
-          // Hide loading indicator
+        // Hide loading indicator
 
-          // Present error to user
+        // Present error to user
       }
-  });
+    });
 
   }
 
@@ -116,7 +116,7 @@ export class AppMainComponent implements OnInit {
       homeRoute.component = TabComponent;
       pathConfig.push(homeRoute);
 
-      
+
       this.router.resetConfig(pathConfig);
 
     });

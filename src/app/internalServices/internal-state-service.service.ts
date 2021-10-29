@@ -8,33 +8,44 @@ import { Application } from '../views/model/application';
 })
 export class InternalStateService {
 
-  currentState: BehaviorSubject<State> 
+  currentState: BehaviorSubject<StateObject>
 
   currentApp: Subject<Application> = new Subject
 
   currentRoute = new Subject<string>();
 
   constructor() {
-    this.currentState = new BehaviorSubject(State.LOAD);
-    this.currentState.next( State.LOAD);
-   }
+    let state = new StateObject(State.LOAD);
+    this.currentState = new BehaviorSubject(state);
+    this.currentState.next(state);
+  }
 
   stateObservable() {
-    
+
     return this.currentState.asObservable();
   }
 
-  setCurrentApp(app : Application ){
+  setCurrentApp(app: Application) {
     this.currentApp.next(app);
   }
-  getCurrentApp(){
+  getCurrentApp() {
     return this.currentApp.toPromise();
   }
 
-  getCurrentRoute(){
+  getCurrentRoute() {
     return this.currentRoute.toPromise();
   }
-  
+
+}
+
+export class StateObject {
+  id: string;
+  state: State;
+
+  constructor(state: State, id?: string) {
+    this.state = state;
+    this.id = id;
+  }
 }
 
 

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppMainComponent } from './views/app-main/app-main.component';
 
 
-import { TabComponent } from './views/tab/tab.component'
+import { TabComponent } from './components/tab/tab.component'
 import { RouterModule, Routes } from '@angular/router';
 import { GridViewComponent } from './views/grid-view/grid-view.component';
 import { SplitViewComponent } from './views/split-view/split-view.component';
@@ -13,7 +13,7 @@ import { DetailViewComponent } from './views/detail-view/detail-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './views/login/login.component';
 import { HomeViewComponent } from './views/home-view/home-view.component';
-import { InputTextComponent } from './components/input-text/input-text.component';
+import { InputTextComponent } from './components/formComponents/input-text/input-text.component';
 
 
 const routes: Routes = [

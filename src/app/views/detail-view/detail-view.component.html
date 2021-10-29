@@ -1,8 +1,11 @@
+<div>{{translatedEntityName}} {{id}}</div>
 <vaadin-button (click)='clickDelete()' theme='primary'>Delete</vaadin-button>
 <vaadin-button (click)='clickClose()'>X</vaadin-button>
 <vaadin-button (click)='clickSave()' theme='primary'>Save</vaadin-button>
-<vaadin-form-layout>
-    <input-text label="First Name" value="Jane"></input-text>
-    <vaadin-text-field label="Last Name" value="Doe"></vaadin-text-field>
-    <vaadin-text-field label="Email" value="jane.doe@example.com"></vaadin-text-field>
-</vaadin-form-layout>
+
+<section *ngFor="let bloc of detail.blocs">
+    <div class="form-line" *ngFor="let line of bloc.lines">
+        <input-text *ngFor="let field of line.fields" value="test" [label]="translate(field.translationKey)">
+        </input-text>
+    </div>
+</section>

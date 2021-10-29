@@ -1,11 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { InternalStateService, State } from 'src/app/internalServices/internal-state-service.service';
+import { InternalStateService, State, StateObject } from 'src/app/internalServices/internal-state-service.service';
 import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
-import { take } from 'rxjs/operators';
-import { Subscriber } from 'rxjs';
-// import '../theme/customTextField.js'
 
 @Component({
   selector: 'grid-view',
@@ -50,7 +47,7 @@ export class GridViewComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.internalService.stateObservable().subscribe(next => {
-      if (next == State.LOAD) {
+      if (next.state == State.LOAD) {
         this.HighlightRow = -1;
       }
     })
@@ -75,15 +72,15 @@ export class GridViewComponent implements OnInit, OnChanges {
   }
 
 
-  clickRow(i: any): void {
+  clickRow(i: number): void {
     this.HighlightRow = i;
-    this.internalService.currentState.next(State.EDIT);
-
-
+    let stateObject = new StateObject(State.EDIT, this.displayedData[i].id);
+    this.internalService.currentState.next(stateObject);
   }
   clickAdd(): void {
     this.isAdd = true;
-    this.internalService.currentState.next(State.ADD);
+    let stateObject = new StateObject(State.ADD);
+    this.internalService.currentState.next(stateObject);
   }
 
 

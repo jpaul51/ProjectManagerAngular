@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
-import { InternalStateService, State } from '../../internalServices/internal-state-service.service'
+import { InternalStateService, State, StateObject } from '../../internalServices/internal-state-service.service'
 import { DestroySubscribers } from '../decorators/destroySubscribers.decorator';
 import { take } from 'rxjs/operators';
 
@@ -16,13 +16,15 @@ export class SplitViewComponent implements OnInit {
 
   public subscribers: any = {};
 
-  currentState: Observable<State>
+  currentState: Observable<StateObject>
 
   isEditoropened: boolean = false;
 
   appConfigList: Application[]
   currentData: any;
   currentApp: Application;
+
+  selectedId: string = null;
 
   constructor(private internalService: InternalStateService, private appService: ApplicationService) {
 
@@ -39,7 +41,8 @@ export class SplitViewComponent implements OnInit {
   ngOnInit(): void {
     this.currentState = this.internalService.stateObservable();
     this.currentState.subscribe(next => {
-      this.isEditoropened = (next == State.ADD || next == State.EDIT);
+      this.isEditoropened = (next.state == State.ADD || next.state == State.EDIT);
+      this.selectedId = next.id;
     })
 
   }

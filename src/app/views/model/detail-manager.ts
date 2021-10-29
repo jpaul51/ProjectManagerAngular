@@ -2,7 +2,7 @@ import { Detail } from "./detail";
 
 export class DetailManager {
 
-    details : Detail[]
-    defaultetail: Detail
+    details: Detail[]
+    defaultDetail: Detail
 
 }
