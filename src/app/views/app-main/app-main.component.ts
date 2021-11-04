@@ -10,7 +10,9 @@ import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tab-styles'
 import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tabs-styles'
 import '@vaadin/vaadin-split-layout'
 import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
+
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
+import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-text-field/vaadin-password-field.js';
 import '@vaadin/vaadin-text-field/vaadin-email-field.js';

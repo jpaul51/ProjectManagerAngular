@@ -10,6 +10,7 @@ export class InputSelectComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("combo");
   }
 
 }

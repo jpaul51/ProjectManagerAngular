@@ -13,6 +13,7 @@ export class InputTextComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("input")
   }
 
 }
