@@ -2,18 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 
 @Component({
-  selector: 'input-text',
-  templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.less']
+  selector: 'lpqft-text-area',
+  templateUrl: './text-area.component.html',
+  styleUrls: ['./text-area.component.less']
 })
-export class InputTextComponent extends AbstractInputComponent implements OnInit {
+export class TextAreaComponent extends AbstractInputComponent implements OnInit {
 
   constructor() { 
     super();
   }
 
   ngOnInit(): void {
-    console.log("input")
   }
 
 }

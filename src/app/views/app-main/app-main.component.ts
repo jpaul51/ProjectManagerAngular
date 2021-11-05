@@ -11,6 +11,8 @@ import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tabs-styles'
 import '@vaadin/vaadin-split-layout'
 import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
 
+import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
+import '@vaadin/vaadin-date-time-picker/vaadin-date-time-picker.js';
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
 import '@vaadin/vaadin-combo-box/vaadin-combo-box.js';
 import '@vaadin/vaadin-text-field/vaadin-text-area.js';

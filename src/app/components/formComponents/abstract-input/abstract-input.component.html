@@ -1,8 +1,12 @@
-<span [ngSwitch]="type">
+<span [ngSwitch]="FIELD_TYPE[type]">
 
-    <input-text [value]='value' [label]='label' *ngSwitchCase='fieldTypeEnum.TEXT_INPUT'></input-text>
-    <input-select [value]='value' [label]='label' *ngSwitchCase='fieldTypeEnum.SELECT'></input-select>
+    <input-text [readOnly]="readOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_INPUT'></input-text>
+    <input-select [readOnly]="readOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT'></input-select>
+    <lpqft-text-area [readOnly]="readOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_AREA'></lpqft-text-area>
+    <lpqft-date-picker [readOnly]="readOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME'></lpqft-date-picker>
+    <lpqft-date-time-picker [readOnly]="readOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME_ONLY'></lpqft-date-time-picker>
 
-    <span><input-text [value]='value' [label]='label' *ngSwitchDefault></input-text></span>
+    
+    <span><input-text [readOnly]="readOnly"  [value]='value' [label]='label' *ngSwitchDefault></input-text></span>
 
 </span>

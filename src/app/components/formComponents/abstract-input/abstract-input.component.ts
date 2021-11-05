@@ -13,11 +13,12 @@ export class AbstractInputComponent implements OnInit {
   @Input() label: string;
   @Input() value: string;
 
-  @Input() type: FIELD_TYPE = FIELD_TYPE.TEXT_INPUT;
-  fieldTypeEnum: typeof FIELD_TYPE = FIELD_TYPE;
+  @Input() type: FIELD_TYPE;
+  @Input() readOnly : boolean;
+
+  FIELD_TYPE = FIELD_TYPE;
 
   ngOnInit(): void {
-    console.log(this.type)
   }
 
 }

@@ -16,6 +16,9 @@ import { HomeViewComponent } from './views/home-view/home-view.component';
 import { InputTextComponent } from './components/formComponents/input-text/input-text.component';
 import { AbstractInputComponent } from './components/formComponents/abstract-input/abstract-input.component';
 import { InputSelectComponent } from './components/formComponents/input-select/input-select.component';
+import { TextAreaComponent } from './components/formComponents/text-area/text-area.component';
+import { DatePickerComponent } from './components/formComponents/date-picker/date-picker.component';
+import { DateTimePickerComponent } from './components/formComponents/date-time-picker/date-time-picker.component';
 
 
 const routes: Routes = [
@@ -36,7 +39,10 @@ const routes: Routes = [
     HomeViewComponent,
     InputTextComponent,
     AbstractInputComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    TextAreaComponent,
+    DatePickerComponent,
+    DateTimePickerComponent
 
 
   ],
