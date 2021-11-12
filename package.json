@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "@ckeditor/ckeditor5-angular": "^2.0.2",
+    "@ckeditor/ckeditor5-build-classic": "^31.0.0",
     "@polymer/iron-icon": "^3.0.1",
     "@vaadin/vaadin": "^21.0.3",
     "@webcomponents/webcomponentsjs": "^2.5.0",

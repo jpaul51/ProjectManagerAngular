@@ -19,6 +19,8 @@ import { InputSelectComponent } from './components/formComponents/input-select/i
 import { TextAreaComponent } from './components/formComponents/text-area/text-area.component';
 import { DatePickerComponent } from './components/formComponents/date-picker/date-picker.component';
 import { DateTimePickerComponent } from './components/formComponents/date-time-picker/date-time-picker.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TextRichComponent } from './components/formComponents/text-rich/text-rich.component';
 
 
 const routes: Routes = [
@@ -42,14 +44,17 @@ const routes: Routes = [
     InputSelectComponent,
     TextAreaComponent,
     DatePickerComponent,
-    DateTimePickerComponent
+    DateTimePickerComponent,
+    
+    TextRichComponent
 
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
 
 
 
