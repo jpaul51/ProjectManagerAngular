@@ -12,6 +12,9 @@ td{
     font-size: var(--lumo-font-size-s);
     color: #c3e0ed;
 }
+
+
+
 :host div {
     padding-right:16px;
     padding-left:16px;
@@ -22,9 +25,16 @@ td{
     height:100%;
 }
 
-tr[class="active"]{
+tr.active{
     background-color: #273d5a;
 }
+tr.tableContent{
+    cursor: pointer;
+}
+tr.tableContent:hover{
+    background-color: #273d5a;
+}
+
 
 label[part="label"]{
     color: white

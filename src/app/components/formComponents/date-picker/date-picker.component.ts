@@ -14,7 +14,6 @@ export class DatePickerComponent extends AbstractInputComponent implements OnIni
    }
 
   ngOnInit(): void {
-    console.log("test: "+this.readOnly)
 
   }
 
