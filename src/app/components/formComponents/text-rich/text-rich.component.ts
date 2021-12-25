@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as Editor from '../../../../ext/ckEditor';
+import '../../../../ext/ckEditor/sample/styles.css';
 
 @Component({
   selector: 'lpqft-text-rich',
@@ -7,40 +8,31 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./text-rich.component.less']
 })
 export class TextRichComponent implements OnInit {
-  
+
   public editor;
 
   constructor() { }
 
-  public onReady( editor ) {
+  public onReady(editor) {
 
- 
-}
 
-async test (){
-  this.editor = ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-      toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-      heading: {
-          options: [
-              { model: 'paragraph', title: 'Paragraphx', class: 'ck-heading_paragraph' },
-              { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-              { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-          ]
-      }
-  } )
-  .catch( error => {
-      console.log( error );
-  } );
   }
 
-  ngAfterContentInit() : void{
+  async test() {
+    this.editor = Editor
+      .create(document.querySelector('#editor'))
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  ngAfterContentInit(): void {
     this.test();
   }
 
   ngOnInit(): void {
 
-   
+
 
   }
 

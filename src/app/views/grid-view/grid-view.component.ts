@@ -29,13 +29,15 @@ export class GridViewComponent implements OnInit, OnChanges {
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
- 
+
     for (let propName in changes) {
 
       if (propName == "currentApp" && this.currentApp != null) {
         this.displayedColumnsName = this.currentApp.tlManager.defaultResultView.columns;
       }
       else if (propName == "data" && this.data != null) {
+        console.log(this.displayedColumnsName)
+        console.log(this.data.content)
         this.displayedData = this.data.content;
       }
     }
