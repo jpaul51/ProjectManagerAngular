@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { InternalStateService, State, StateObject } from 'src/app/internalServices/internal-state-service.service';
+import { ApplicationService } from 'src/app/services/application-service.service';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
 import { Application } from '../model/application';
 import { Detail } from '../model/detail';
@@ -17,7 +18,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
   translatedEntityName: String;
   detail: Detail;
 
-  constructor(private internalService: InternalStateService, private translationService: TranslationServiceService) { }
+  constructor(private internalService: InternalStateService, private translationService: TranslationServiceService, private appService: ApplicationService) { }
 
   ngOnInit(): void {
     this.translatedEntityName = this.translationService.translateKey(this.app.appEntityKey);
@@ -30,6 +31,13 @@ export class DetailViewComponent implements OnInit, OnChanges {
       if (propName == "app" && this.app != null) {
         this.detail = this.app.dlManager.defaultDetail;
         this.translatedEntityName = this.app.appEntityKey;
+      }
+
+      if (propName == "id" && this.id != null) {
+        console.log("load")
+        this.appService.getOne(this.app.mainEntity, this.id).then(data=>{
+          console.log(data)
+        });
       }
     }
   }

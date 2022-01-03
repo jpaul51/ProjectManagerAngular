@@ -10,7 +10,7 @@ export const serverApi = "http://localhost:4200/api/"
 
 export const loginData = {
   login: "admin",
-  password: "tt"
+  password: "admin"
 }
 
 /*

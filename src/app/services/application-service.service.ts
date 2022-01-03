@@ -13,8 +13,11 @@ export class ApplicationService {
 
   token: any;
 
-  private appConfigListPath = "v1/applicationDescriptor"
-  private appGetPagePath = "v1/applicationPage"
+  private apiVersion = "v1";
+
+  private appConfigListPath = this.apiVersion + "/applicationDescriptor"
+  private appGetPagePath = this.apiVersion + "/applicationPage"
+  private appGetOnePath = this.apiVersion + "/application/"
 
   constructor(private http: HttpClient, private translationService: TranslationServiceService) { }
 
@@ -32,7 +35,7 @@ export class ApplicationService {
 
 
     var url = serverApi + "loginRemote";
-
+    console.log("LOGIN: "+url)
     return this.http.post(url, loginData, httpOptions).subscribe(data => {
 
       localStorage.setItem('user', data["user"]);
@@ -82,10 +85,18 @@ export class ApplicationService {
 
   getPage(descriptor, filter = "", pageIndex = 0, pageSize = 10) {
     const httpOptions = this.getHeaders();
-    return this.http.get(serverApi + this.appGetPagePath + "?descriptor=" + descriptor + "&pageIndex=" + pageIndex + "&pageSize=" + pageSize + "&filter=" + filter, httpOptions)
+    return this.http.get(serverApi + this.appGetPagePath + "?descriptor=" + descriptor + "&pageIndex="
+      + pageIndex + "&pageSize=" + pageSize + "&filter=" + filter, httpOptions)
       .pipe(timeout(2000))
       .toPromise();
 
+  }
+
+  getOne(entity, id) {
+    const httpOptions = this.getHeaders();
+    return this.http.post(serverApi + this.appGetOnePath + entity + "/" + id+"/open","", httpOptions)
+      .pipe(timeout(2000))
+      .toPromise();
   }
 
 }
