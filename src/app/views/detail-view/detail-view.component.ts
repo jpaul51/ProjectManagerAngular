@@ -18,7 +18,8 @@ export class DetailViewComponent implements OnInit, OnChanges {
   translatedEntityName: String;
   detail: Detail;
 
-  constructor(private internalService: InternalStateService, private translationService: TranslationServiceService, private appService: ApplicationService) { }
+  constructor(private internalService: InternalStateService, private translationService: TranslationServiceService,
+    private appService: ApplicationService) { }
 
   ngOnInit(): void {
     this.translatedEntityName = this.translationService.translateKey(this.app.appEntityKey);
@@ -35,7 +36,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
       if (propName == "id" && this.id != null) {
         console.log("load")
-        this.appService.getOne(this.app.mainEntity, this.id).then(data=>{
+        this.appService.getOne(this.app.mainEntity, this.id).then(data => {
           console.log(data)
         });
       }
