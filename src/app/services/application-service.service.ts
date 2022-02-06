@@ -5,6 +5,7 @@ import { Application } from '../views/model/application';
 import { map, timeout } from 'rxjs/operators';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { TranslationServiceService } from './translation-service.service';
+import { OpenResponse } from './responses/open-response';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class ApplicationService {
 
 
     var url = serverApi + "loginRemote";
-    console.log("LOGIN: "+url)
+    console.log("LOGIN: " + url)
     return this.http.post(url, loginData, httpOptions).subscribe(data => {
 
       localStorage.setItem('user', data["user"]);
@@ -92,11 +93,15 @@ export class ApplicationService {
 
   }
 
-  getOne(entity, id) {
+  getOne(entity, id): Promise<OpenResponse> {
     const httpOptions = this.getHeaders();
-    return this.http.post(serverApi + this.appGetOnePath + entity + "/" + id+"/open","", httpOptions)
+    const body = {
+      id: id,
+      entityName: entity
+    }
+    return this.http.post(serverApi + this.appGetOnePath + "openEntity", body, httpOptions)
       .pipe(timeout(2000))
-      .toPromise();
+      .toPromise() as Promise<OpenResponse>;
   }
 
 }

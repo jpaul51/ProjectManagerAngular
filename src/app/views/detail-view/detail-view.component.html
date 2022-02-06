@@ -5,8 +5,9 @@
 
 <section *ngFor="let bloc of detail.blocs">
     <div class="form-line" *ngFor="let line of bloc.lines">
-        <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="field.type" [label]="translate(field.translationKey)"  [isReadOnly]="field.readOnly"
-        [entityDescriptor]="field.entityDescriptor">
+        <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="data[field.name]"
+            [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly"
+            [entityDescriptor]="field.entityDescriptor">
         </abstract-input>
     </div>
 </section>
