@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 
 @Component({
@@ -8,7 +8,7 @@ import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 })
 export class AbstractInputComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(LOCALE_ID) public locale: string) { }
 
   @Input() label: string;
   @Input() value: string;

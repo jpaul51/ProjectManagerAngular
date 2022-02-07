@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  Inject,  LOCALE_ID,  OnInit } from '@angular/core';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 import { Item } from './item';
@@ -12,8 +12,8 @@ export class InputSelectComponent extends AbstractInputComponent implements OnIn
   
   data : Item[];
 
-  constructor( private appService: ApplicationService) {
-    super();
+  constructor(@Inject(LOCALE_ID) public locale: string, private appService: ApplicationService) {
+    super(locale);
    }
 
   ngOnInit(): void {

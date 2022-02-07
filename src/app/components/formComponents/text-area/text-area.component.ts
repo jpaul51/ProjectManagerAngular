@@ -8,9 +8,6 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 })
 export class TextAreaComponent extends AbstractInputComponent implements OnInit {
 
-  constructor() { 
-    super();
-  }
 
   ngOnInit(): void {
   }

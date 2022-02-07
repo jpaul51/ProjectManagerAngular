@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -18,10 +18,14 @@ import { AbstractInputComponent } from './components/formComponents/abstract-inp
 import { InputSelectComponent } from './components/formComponents/input-select/input-select.component';
 import { TextAreaComponent } from './components/formComponents/text-area/text-area.component';
 import { DatePickerComponent } from './components/formComponents/date-picker/date-picker.component';
-import { DateTimePickerComponent } from './components/formComponents/date-time-picker/date-time-picker.component';
+import { TimePickerComponent } from './components/formComponents/time-picker/time-picker.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TextRichComponent } from './components/formComponents/text-rich/text-rich.component';
+import { DateTimePickerComponent } from './components/formComponents/date-time-picker/date-time-picker.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr);
 
 const routes: Routes = [
   { path: 'home', component: TabComponent },
@@ -44,9 +48,10 @@ const routes: Routes = [
     InputSelectComponent,
     TextAreaComponent,
     DatePickerComponent,
-    DateTimePickerComponent,
+    TimePickerComponent,
     
-    TextRichComponent
+    TextRichComponent,
+         DateTimePickerComponent
 
 
   ],
@@ -62,7 +67,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'},],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 
 @Component({
@@ -6,12 +6,11 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.less']
 })
-export class DatePickerComponent extends AbstractInputComponent implements OnInit {
+export class DatePickerComponent extends AbstractInputComponent implements OnInit, OnChanges {
 
-  constructor() {
-    super();
-
-   }
+  ngOnChanges(changes: SimpleChanges): void {
+   console.log("change DatePicker")
+  }
 
   ngOnInit(): void {
 
