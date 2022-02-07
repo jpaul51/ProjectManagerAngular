@@ -9,6 +9,8 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 })
 export class DateTimePickerComponent  extends AbstractInputComponent implements OnInit, OnChanges { 
 
+  picker : any
+
   ngOnChanges(changes: SimpleChanges): void {
    console.log("change dateTime");
   //  this.locale = "fr-FR";

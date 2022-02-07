@@ -1,1 +1,16 @@
-<vaadin-date-time-picker [attr.readonly]="isReadOnly" [locale]="locale"  class='textfield' [label]="label" [value]="value"></vaadin-date-time-picker>
+<!-- <vaadin-date-time-picker [attr.readonly]="isReadOnly" [locale]="locale"  class='textfield' [label]="label" [value]="value"></vaadin-date-time-picker> -->
+
+<mat-form-field>
+    <input class="textfield input-content" part="value" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" 
+     >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker [showSpinners]="false" [showSeconds]="false" [stepHour]="1"
+      [stepMinute]="10" [stepSecond]="1" [touchUi]="true" color="primary"
+      [enableMeridian]="false" [disableMinute]="false" [hideTime]="false">
+      <!-- Custom icon or text of Apply icon -->
+      <ng-template>
+        <!-- <mat-icon>star</mat-icon> -->
+        <span>OK</span>
+      </ng-template>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>

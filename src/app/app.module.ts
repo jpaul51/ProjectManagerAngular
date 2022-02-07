@@ -22,8 +22,13 @@ import { TimePickerComponent } from './components/formComponents/time-picker/tim
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TextRichComponent } from './components/formComponents/text-rich/text-rich.component';
 import { DateTimePickerComponent } from './components/formComponents/date-time-picker/date-time-picker.component';
+
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr);
 
@@ -59,7 +64,12 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    CKEditorModule
+    CKEditorModule,
+    MatDatepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    BrowserAnimationsModule ,
+    NgxMatNativeDateModule
 
 
 
