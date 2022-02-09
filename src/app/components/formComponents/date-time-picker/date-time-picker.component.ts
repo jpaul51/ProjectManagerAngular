@@ -13,6 +13,7 @@ export class DateTimePickerComponent  extends AbstractInputComponent implements 
 
   ngOnChanges(changes: SimpleChanges): void {
    console.log("change dateTime");
+   console.log(this.fieldName)
   //  this.locale = "fr-FR";
    const datepipe: DatePipe = new DatePipe(this.locale)
    let formattedDate = datepipe.transform(this.value, "YYYY-MM-dd'T'HH:mm:ss")

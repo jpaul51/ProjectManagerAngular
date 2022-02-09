@@ -1,7 +1,7 @@
 <!-- <vaadin-date-time-picker [attr.readonly]="isReadOnly" [locale]="locale"  class='textfield' [label]="label" [value]="value"></vaadin-date-time-picker> -->
-
+<label [for]="fieldName">{{label}}</label>
 <mat-form-field>
-    <input class="textfield input-content" part="value" matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" 
+    <input [id]="fieldName" class="textfield input-content" part="value" matInput [ngxMatDatetimePicker]="picker" [value]="value"
      >
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <ngx-mat-datetime-picker #picker [showSpinners]="false" [showSeconds]="false" [stepHour]="1"

@@ -1,13 +1,13 @@
 <span [ngSwitch]="FIELD_TYPE[type]">
 
-    <input-text [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_INPUT'></input-text>
-    <input-select [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT'></input-select>
-    <lpqft-text-area [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_AREA'></lpqft-text-area>
-    <lpqft-date-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE'></lpqft-date-picker>
-    <lpqft-date-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME'></lpqft-date-time-picker>
+    <input-text [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_INPUT' [fieldName]="fieldName"></input-text>
+    <input-select [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT' [fieldName]="fieldName"></input-select>
+    <lpqft-text-area [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_AREA' [fieldName]="fieldName"></lpqft-text-area>
+    <lpqft-date-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE' [fieldName]="fieldName"></lpqft-date-picker>
+    <lpqft-date-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME' [fieldName]="fieldName"></lpqft-date-time-picker>
 
-    <lpqft-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME_ONLY'></lpqft-time-picker>
-    <lpqft-text-rich [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_RICH'></lpqft-text-rich>
+    <lpqft-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME_ONLY' [fieldName]="fieldName"></lpqft-time-picker>
+    <lpqft-text-rich [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_RICH' [fieldName]="fieldName"></lpqft-text-rich>
     
     <span><input-text [isReadOnly]="isReadOnly"  [value]='value' [label]='label' *ngSwitchDefault></input-text></span>
 

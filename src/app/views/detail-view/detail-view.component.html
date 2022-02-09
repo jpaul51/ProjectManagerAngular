@@ -7,6 +7,7 @@
     <div class="form-line" *ngFor="let line of bloc.lines">
         <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="data[field.name]"
             [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly"
+            [fieldName]="field.name"
             [entityDescriptor]="field.entityDescriptor">
         </abstract-input>
     </div>

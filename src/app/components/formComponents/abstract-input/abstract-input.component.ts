@@ -12,6 +12,7 @@ export class AbstractInputComponent implements OnInit {
 
   @Input() label: string;
   @Input() value: string;
+  @Input() fieldName: string;
 
   @Input() type: FIELD_TYPE;
   @Input() isReadOnly : boolean;

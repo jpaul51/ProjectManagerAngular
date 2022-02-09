@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 registerLocaleData(localeFr);
 
@@ -77,7 +78,21 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'},],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'},
+  {
+    provide: MAT_DATE_FORMATS,
+    useValue: {
+      parse: {
+        dateInput: "YYYY-MM-DD'T'HH:mm:ss'Z'",
+      },
+      display: {
+        dateInput: 'DD-MM-YYYY HH:mm',
+        monthYearLabel: 'MMMM YYYY',
+        dateA11yLabel: 'DD-MM-YYYY HH:mm',
+        monthYearA11yLabel: 'MMMM YYYY'
+      }
+    }
+  }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
