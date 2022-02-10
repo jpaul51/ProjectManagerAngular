@@ -1,4 +1,5 @@
 import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 
 @Component({
@@ -8,7 +9,7 @@ import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 })
 export class AbstractInputComponent implements OnInit {
 
-  constructor(@Inject(LOCALE_ID) public locale: string) { }
+  constructor() { }
 
   @Input() label: string;
   @Input() value: string;

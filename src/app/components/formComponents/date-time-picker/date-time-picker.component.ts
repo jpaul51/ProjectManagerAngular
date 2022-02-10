@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, Inject, Input, LOCALE_ID, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 
 @Component({
@@ -11,14 +12,12 @@ export class DateTimePickerComponent  extends AbstractInputComponent implements 
 
   picker : any
 
+  constructor(protected dateFormatterService : DateFormatterService){
+    super();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-   console.log("change dateTime");
-   console.log(this.fieldName)
-  //  this.locale = "fr-FR";
-   const datepipe: DatePipe = new DatePipe(this.locale)
-   let formattedDate = datepipe.transform(this.value, "YYYY-MM-dd'T'HH:mm:ss")
-   console.log(formattedDate);
-   this.value = formattedDate
+    this.value = this.dateFormatterService.formatDateTimeForField(this.value);
   }
 
   ngOnInit(): void {

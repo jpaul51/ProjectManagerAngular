@@ -12,8 +12,8 @@ export class InputSelectComponent extends AbstractInputComponent implements OnIn
   
   data : Item[];
 
-  constructor(@Inject(LOCALE_ID) public locale: string, private appService: ApplicationService) {
-    super(locale);
+  constructor(private appService: ApplicationService) {
+    super();
    }
 
   ngOnInit(): void {
@@ -26,6 +26,7 @@ export class InputSelectComponent extends AbstractInputComponent implements OnIn
        item.label = element.label;
        this.data.push(item);
      });
+
     });
 
   }

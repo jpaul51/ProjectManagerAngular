@@ -25,7 +25,6 @@ export class DetailViewComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.translatedEntityName = this.translationService.translateKey(this.app.appEntityKey);
     this.detail = this.app.dlManager.defaultDetail;
-    console.log(this.detail)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,7 +39,6 @@ export class DetailViewComponent implements OnInit, OnChanges {
         console.log("load")
         this.appService.getOne(this.app.mainEntity, this.id).then(data => {
           this.data = data.entity
-          console.log(data)
         });
       }
     }

@@ -3,6 +3,9 @@ import { InternalStateService, State, StateObject } from 'src/app/internalServic
 import { Application } from '../model/application';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
+import { FIELD_TYPE } from '../model/field-detail';
+import {ResultView} from '../result-view';
+import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 
 @Component({
   selector: 'grid-view',
@@ -21,31 +24,14 @@ export class GridViewComponent implements OnInit, OnChanges {
 
   displayedData: any = [];
   displayedColumnsName = [];
+  resultView : ResultView;
 
 
-  constructor(private internalService: InternalStateService, private appService: ApplicationService, private translationService: TranslationServiceService) {
+  constructor(private internalService: InternalStateService, private appService: ApplicationService, private translationService: TranslationServiceService,
+    private dateFormatterService : DateFormatterService) {
     this.ClickedRow = function (index) {
       this.HighlightRow = index;
     }
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-
-    for (let propName in changes) {
-
-      if (propName == "currentApp" && this.currentApp != null) {
-        this.displayedColumnsName = this.currentApp.tlManager.defaultResultView.columns;
-      }
-      else if (propName == "data" && this.data != null) {
-        console.log(this.displayedColumnsName)
-        console.log(this.data.content)
-        this.displayedData = this.data.content;
-      }
-    }
-
-  }
-
-  private getResultFields(app: Application): any[] {
-    return app.allFields.filter(field => app.tlManager.defaultResultView.columns.includes(field.name));
   }
 
   ngOnInit(): void {
@@ -71,6 +57,27 @@ export class GridViewComponent implements OnInit, OnChanges {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+
+    for (let propName in changes) {
+
+      if (propName == "currentApp" && this.currentApp != null) {
+        this.resultView =  this.currentApp.tlManager.defaultResultView;
+        this.displayedColumnsName = this.resultView.columns;
+      }
+      else if (propName == "data" && this.data != null) {
+        this.displayedData = this.data.content;
+      }
+    }
+
+  }
+
+  private getResultFields(app: Application): any[] {
+    return app.allFields.filter(field => app.tlManager.defaultResultView.columns.includes(field.name));
+  }
+
+
+
 
   clickRow(i: number): void {
     this.HighlightRow = i;
@@ -84,8 +91,19 @@ export class GridViewComponent implements OnInit, OnChanges {
   }
 
 
-  formatData(item) {
+  formatData(item : any, col : string) {
+    console.log("format called with "+item + ", "+col)
     if (typeof item === 'string' || item instanceof String || item == null) {
+
+      let field = this.currentApp.allFields.filter(field => field.name == col)[0];
+
+      console.log("CHECK "+field.type.toString() + " === "+ FIELD_TYPE[FIELD_TYPE.DATE_TIME]);
+      if(field.type.toString() === FIELD_TYPE[FIELD_TYPE.DATE_TIME].toString()){
+       console.log("date time : "+item)
+        item = this.dateFormatterService.formatDateTime(item);
+        console.log("date time result : "+item)
+      }
+
       return item;
     }
     else {
