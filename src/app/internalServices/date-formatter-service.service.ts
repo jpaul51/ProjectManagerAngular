@@ -18,4 +18,15 @@ export class DateFormatterService {
     return datepipe.transform(isoDate, "dd-MM-YYYY HH:mm")
   }
 
+  formatTime(isoTime : string){
+    let output = isoTime;
+    try{
+      const datepipe: DatePipe = new DatePipe(this.locale)
+      return datepipe.transform(isoTime, "HH:mm")
+    }catch( e ){
+      return output;
+    }
+   
+  }
+
 }

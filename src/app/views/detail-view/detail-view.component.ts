@@ -17,7 +17,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
   translatedEntityName: String;
   detail: Detail;
-  data: any;
+  oneEntityFetchedData: any = {};
 
   constructor(private internalService: InternalStateService, private translationService: TranslationServiceService,
     private appService: ApplicationService) { }
@@ -36,9 +36,8 @@ export class DetailViewComponent implements OnInit, OnChanges {
       }
 
       if (propName == "id" && this.id != null) {
-        console.log("load")
-        this.appService.getOne(this.app.mainEntity, this.id).then(data => {
-          this.data = data.entity
+        this.appService.getOne(this.app.mainEntity, this.id).then(oneEntityFetchedData => {
+          this.oneEntityFetchedData = oneEntityFetchedData.entity
         });
       }
     }

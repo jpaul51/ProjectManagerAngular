@@ -1,4 +1,4 @@
-import { Component,  Inject,  LOCALE_ID,  OnInit } from '@angular/core';
+import { Component,  Inject,  LOCALE_ID,  OnChanges,  OnInit, SimpleChanges } from '@angular/core';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 import { Item } from './item';
@@ -10,24 +10,27 @@ import { Item } from './item';
 })
 export class InputSelectComponent extends AbstractInputComponent implements OnInit {
   
-  data : Item[];
+  selectItems : Item[];
 
   constructor(private appService: ApplicationService) {
     super();
    }
 
-  ngOnInit(): void {
-    let dataPromise = this.appService.getPage(this.entityDescriptor, "", 0, 300);
-    dataPromise.then(apiData=>{
-    this.data = Array();
-     apiData["content"].forEach(element => {
-       let item = new Item();
-       item.value = element.id;
-       item.label = element.label;
-       this.data.push(item);
-     });
 
-    });
+  ngOnInit(): void {
+    if(this.entityDescriptor != null){
+      let dataPromise = this.appService.getPage(this.entityDescriptor, "", 0, 300);
+      dataPromise.then(apiData=>{
+      this.selectItems = Array();
+      apiData["content"].forEach(element => {
+        let item = new Item();
+        item.value = element.id;
+        item.label = element.label;
+        this.selectItems.push(item);
+      });
+
+      });
+  }
 
   }
 

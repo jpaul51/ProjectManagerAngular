@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 import { I18n } from './i18n';
 
@@ -11,9 +12,14 @@ export class TimePickerComponent extends AbstractInputComponent implements OnIni
   
   options = new I18n();
 
+  constructor(private dateFormatterService : DateFormatterService){
+    super(); 
+
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("change dateTime")
-    console.log(this.value)
+    this.value = this.dateFormatterService.formatTime(this.value);
+
   }
 
   ngOnInit(): void {

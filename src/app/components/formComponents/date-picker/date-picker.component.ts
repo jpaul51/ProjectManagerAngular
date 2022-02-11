@@ -9,7 +9,6 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 export class DatePickerComponent extends AbstractInputComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
-   console.log("change DatePicker")
   }
 
   ngOnInit(): void {

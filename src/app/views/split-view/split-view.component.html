@@ -1,6 +1,6 @@
 <vaadin-split-layout>
     <div class="primary" slot="primary">
-        <grid-view [data]="currentData" [currentApp]="currentApp"></grid-view>
+        <grid-view [data]="currentAppData" [currentApp]="currentApp"></grid-view>
     </div>
     <div class="secondary" slot="secondary" *ngIf="isEditoropened">
         <detail-view [app]="currentApp" [id]="selectedId"></detail-view>

@@ -92,22 +92,23 @@ export class GridViewComponent implements OnInit, OnChanges {
 
 
   formatData(item : any, col : string) {
-    console.log("format called with "+item + ", "+col)
-    if (typeof item === 'string' || item instanceof String || item == null) {
+    if(this.currentApp != null){
+      if (typeof item === 'string' || item instanceof String || item == null) {
 
-      let field = this.currentApp.allFields.filter(field => field.name == col)[0];
+        const modifiedField = this.currentApp.allFields.filter(field => field.name == col);
+        if(modifiedField != null && modifiedField.length > 0){
+          let field = modifiedField[0];
 
-      console.log("CHECK "+field.type.toString() + " === "+ FIELD_TYPE[FIELD_TYPE.DATE_TIME]);
-      if(field.type.toString() === FIELD_TYPE[FIELD_TYPE.DATE_TIME].toString()){
-       console.log("date time : "+item)
-        item = this.dateFormatterService.formatDateTime(item);
-        console.log("date time result : "+item)
+          if(field.type.toString() === FIELD_TYPE[FIELD_TYPE.DATE_TIME].toString()){
+            item = this.dateFormatterService.formatDateTime(item);
+          }
+
+          return item;
+        }
       }
-
-      return item;
-    }
-    else {
-      return item.label;
+      else {
+        return item.label;
+      }
     }
 
   }

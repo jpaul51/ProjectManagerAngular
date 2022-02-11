@@ -12,7 +12,7 @@ export class AbstractInputComponent implements OnInit {
   constructor() { }
 
   @Input() label: string;
-  @Input() value: string;
+  @Input() value: any;
   @Input() fieldName: string;
 
   @Input() type: FIELD_TYPE;
@@ -23,6 +23,14 @@ export class AbstractInputComponent implements OnInit {
   FIELD_TYPE = FIELD_TYPE;
 
   ngOnInit(): void {
+  }
+
+  getValueId() : string{
+    if(this.value != null){
+      return this.value.id;
+    }else{
+      return "";
+    }
   }
 
 }

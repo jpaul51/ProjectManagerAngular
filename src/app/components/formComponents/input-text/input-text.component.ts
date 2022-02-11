@@ -10,7 +10,6 @@ export class InputTextComponent extends AbstractInputComponent implements OnInit
 
 
   ngOnInit(): void {
-    console.log("input")
   }
 
 }

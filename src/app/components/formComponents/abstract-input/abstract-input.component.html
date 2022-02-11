@@ -1,7 +1,7 @@
 <span [ngSwitch]="FIELD_TYPE[type]">
 
     <input-text [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_INPUT' [fieldName]="fieldName"></input-text>
-    <input-select [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='value.id' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT' [fieldName]="fieldName"></input-select>
+    <input-select [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='getValueId()' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT' [fieldName]="fieldName"></input-select>
     <lpqft-text-area [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_AREA' [fieldName]="fieldName"></lpqft-text-area>
     <lpqft-date-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE' [fieldName]="fieldName"></lpqft-date-picker>
     <lpqft-date-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME' [fieldName]="fieldName"></lpqft-date-time-picker>

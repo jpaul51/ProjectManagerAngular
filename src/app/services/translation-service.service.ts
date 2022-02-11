@@ -25,7 +25,7 @@ export class TranslationServiceService {
       })
     }
 
-    this.http.get(serverApi + this.translationsPath, httpOptions).pipe(map(data => <Translation[]>data))
+    this.http.get(serverApi + this.translationsPath, httpOptions).pipe(map(translationData => <Translation[]>translationData))
       .subscribe(data => localStorage.setItem("translations", JSON.stringify(data)),
         error => {
           console.log("Translations error");

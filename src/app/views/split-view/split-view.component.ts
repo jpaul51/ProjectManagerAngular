@@ -21,7 +21,7 @@ export class SplitViewComponent implements OnInit {
   isEditoropened: boolean = false;
 
   appConfigList: Application[]
-  currentData: any;
+  currentAppData: any;
   currentApp: Application;
 
   selectedId: string = null;
@@ -63,9 +63,11 @@ export class SplitViewComponent implements OnInit {
   }
 
   private loadData(currentApp: Application) {
-    let dataPromise = this.appService.getPage(currentApp.mainEntity + "Descriptor");
-    dataPromise.then(data => {
-      this.currentData = data;
-    });
+    if(currentApp.mainEntity != null){
+      let dataPromise = this.appService.getPage(currentApp.mainEntity + "Descriptor");
+      dataPromise.then(appData => {
+        this.currentAppData = appData;
+      });
+    }
   }
 }

@@ -16,7 +16,7 @@ export class Application {
         mainEntity: string
         noTable: boolean;
         apppath: string
-        allFields: FieldDetail[]
+        allFields: FieldDetail[] = []
 
 
 

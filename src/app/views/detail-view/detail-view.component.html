@@ -1,11 +1,11 @@
 <div>{{translatedEntityName}} {{id}}</div>
-<vaadin-button (click)='clickDelete()' theme='primary'>Delete</vaadin-button>
-<vaadin-button (click)='clickClose()'>X</vaadin-button>
-<vaadin-button (click)='clickSave()' theme='primary'>Save</vaadin-button>
+<lpqft-custom-button buttonLabel="Delete" (clickEmitter)='clickDelete()' theme='primary'></lpqft-custom-button>
+<lpqft-custom-button buttonLabel="X" (clickEmitter)='clickClose()'></lpqft-custom-button>
+<lpqft-custom-button buttonLabel="Save" (clickEmitter)='clickSave()' theme='primary'></lpqft-custom-button>
 
 <section *ngFor="let bloc of detail.blocs">
     <div class="form-line" *ngFor="let line of bloc.lines">
-        <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="data[field.name]"
+        <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="oneEntityFetchedData[field.name]"
             [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly"
             [fieldName]="field.name"
             [entityDescriptor]="field.entityDescriptor">

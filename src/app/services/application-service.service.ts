@@ -37,12 +37,12 @@ export class ApplicationService {
 
     var url = serverApi + "loginRemote";
     console.log("LOGIN: " + url)
-    return this.http.post(url, loginData, httpOptions).subscribe(data => {
+    return this.http.post(url, loginData, httpOptions).subscribe(loginData => {
 
-      localStorage.setItem('user', data["user"]);
-      localStorage.setItem('token', data["value"]);
-      this.login = data["user"];
-      this.token = data["token"];
+      localStorage.setItem('user', loginData["user"]);
+      localStorage.setItem('token', loginData["value"]);
+      this.login = loginData["user"];
+      this.token = loginData["token"];
       if (callback != null) {
         callback.call(this);
       }
@@ -57,7 +57,7 @@ export class ApplicationService {
 
     const httpOptions = this.getHeaders();
 
-    this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(timeout(2000), map(data => <Application[]>data))
+    this.http.get(serverApi + this.appConfigListPath, httpOptions).pipe(timeout(2000), map(appConfigData => <Application[]>appConfigData))
       .subscribe(data => {
         this.apps.next(data);
       },

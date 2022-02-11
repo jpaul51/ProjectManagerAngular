@@ -30,6 +30,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 
 registerLocaleData(localeFr);
 
@@ -57,7 +58,8 @@ const routes: Routes = [
     TimePickerComponent,
     
     TextRichComponent,
-         DateTimePickerComponent
+         DateTimePickerComponent,
+         CustomButtonComponent
 
 
   ],
