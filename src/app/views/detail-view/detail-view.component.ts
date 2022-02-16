@@ -45,9 +45,6 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
 
   clickSave(): void {
-    console.log(this.oneEntityFetchedData);
-    // this.appService.saveOne()
-
   }
 
   clickClose(): void {

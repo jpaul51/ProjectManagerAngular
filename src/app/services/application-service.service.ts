@@ -6,7 +6,6 @@ import { map, timeout } from 'rxjs/operators';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { TranslationServiceService } from './translation-service.service';
 import { OpenResponse } from './responses/open-response';
-import { DisplayableEntity } from '../model/displayable-entity';
 
 @Injectable({
   providedIn: 'root'
@@ -103,17 +102,6 @@ export class ApplicationService {
     return this.http.post(serverApi + this.appGetOnePath + "openEntity", body, httpOptions)
       .pipe(timeout(2000))
       .toPromise() as Promise<OpenResponse>;
-  }
-
-  saveOne<T extends DisplayableEntity>(entity: T, entityName: string): Promise<String> {
-    const httpOptions = this.getHeaders();
-    const body = {
-      entity: entity,
-      entityName: entityName
-    }
-    return this.http.post(serverApi + this.appGetOnePath + "saveEntity", body, httpOptions)
-      .pipe(timeout(2000)).toPromise() as Promise<String>;
-
   }
 
 }

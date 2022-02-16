@@ -31,7 +31,6 @@ import localeFr from '@angular/common/locales/fr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { CustomButtonComponent } from './components/custom-button/custom-button.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeFr);
 
@@ -57,11 +56,10 @@ const routes: Routes = [
     TextAreaComponent,
     DatePickerComponent,
     TimePickerComponent,
-
+    
     TextRichComponent,
-    DateTimePickerComponent,
-    CustomButtonComponent,
-    ReactiveFormsModule
+         DateTimePickerComponent,
+         CustomButtonComponent
 
 
   ],
@@ -73,7 +71,7 @@ const routes: Routes = [
     MatDatepickerModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule ,
     NgxMatNativeDateModule
 
 
@@ -82,7 +80,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' },
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'},
   {
     provide: MAT_DATE_FORMATS,
     useValue: {
