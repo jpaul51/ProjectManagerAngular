@@ -1,14 +1,18 @@
 <div>{{translatedEntityName}} {{id}}</div>
-<lpqft-custom-button buttonLabel="Delete" (clickEmitter)='clickDelete()' theme='primary'></lpqft-custom-button>
-<lpqft-custom-button buttonLabel="X" (clickEmitter)='clickClose()'></lpqft-custom-button>
-<lpqft-custom-button buttonLabel="Save" (clickEmitter)='clickSave()' theme='primary'></lpqft-custom-button>
 
-<section *ngFor="let bloc of detail.blocs">
-    <div class="form-line" *ngFor="let line of bloc.lines">
-        <abstract-input *ngFor="let field of line.fields" [type]="field.type" [value]="oneEntityFetchedData[field.name]"
-            [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly"
-            [fieldName]="field.name"
-            [entityDescriptor]="field.entityDescriptor">
-        </abstract-input>
-    </div>
-</section>
+<form [attr.formGroup]="detailForm">
+    <lpqft-custom-button buttonLabel="Delete" (clickEmitter)='clickDelete()' theme='primary'></lpqft-custom-button>
+    <lpqft-custom-button buttonLabel="X" (clickEmitter)='clickClose()'></lpqft-custom-button>
+    <lpqft-custom-button type="submit" buttonLabel="Save" (clickEmitter)='clickSave()' theme='primary'>
+    </lpqft-custom-button>
+
+    <section *ngFor="let bloc of detail.blocs">
+        <div class="form-line" *ngFor="let line of bloc.lines">
+            <abstract-input *ngFor="let field of line.fields" [type]="field.type"
+                [value]="oneEntityFetchedData[field.name]" [ngModel]="oneEntityFetchedData[field.name]"
+                [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly" [fieldName]="field.name"
+                [entityDescriptor]="field.entityDescriptor" [formControlName]="field.name">
+            </abstract-input>
+        </div>
+    </section>
+</form>
