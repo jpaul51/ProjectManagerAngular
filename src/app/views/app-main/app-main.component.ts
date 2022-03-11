@@ -1,13 +1,9 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { AppLayoutElement } from '@vaadin/vaadin-app-layout'
-import { TabsElement } from '@vaadin/vaadin-tabs'
 import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-app-layout/vaadin-app-layout.js';
 import '@vaadin/vaadin-app-layout/vaadin-drawer-toggle.js';
 import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tabs'
 import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tab'
-import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tab-styles'
-import '@vaadin/vaadin-tabs/theme/lumo/vaadin-tabs-styles'
 import '@vaadin/vaadin-split-layout'
 import '@vaadin/vaadin-form-layout/vaadin-form-layout.js';
 

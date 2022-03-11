@@ -31,7 +31,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
 
     this.app.allFields.forEach(field => {
       const name = field.name;
-      this.detailForm.addControl(name, this.fb.control(name));
+      this.detailForm.addControl(name, this.fb.control(this.oneEntityFetchedData[field.name]));
     });
 
   }
@@ -56,7 +56,7 @@ export class DetailViewComponent implements OnInit, OnChanges {
   clickSave(): void {
     this.app.allFields.forEach(field => {
       const name = field.name;
-      console.log(this.detailForm.get(name));
+      console.log(this.detailForm.controls[name]);
     });
   }
 

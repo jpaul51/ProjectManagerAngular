@@ -9,9 +9,9 @@
     <section *ngFor="let bloc of detail.blocs">
         <div class="form-line" *ngFor="let line of bloc.lines">
             <abstract-input *ngFor="let field of line.fields" [type]="field.type"
-                [value]="oneEntityFetchedData[field.name]" [ngModel]="oneEntityFetchedData[field.name]"
-                [label]="translate(field.translationKey)" [isReadOnly]="field.readOnly" [fieldName]="field.name"
-                [entityDescriptor]="field.entityDescriptor" [formControlName]="field.name">
+                [value]="oneEntityFetchedData[field.name]" [label]="translate(field.translationKey)"
+                [isReadOnly]="field.readOnly" [entityDescriptor]="field.entityDescriptor"
+                [formControlName]="oneEntityFetchedData[field.name]">
             </abstract-input>
         </div>
     </section>
