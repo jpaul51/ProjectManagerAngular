@@ -1,1 +1,8 @@
-<vaadin-text-field class='textfield' [label]="label" [value]="value"></vaadin-text-field>
+<div [formGroup]="form">
+    <vaadin-text-field class='textfield' [label]="label" [value]="value" [formControlName]="fieldName">
+    </vaadin-text-field>
+    <!-- {{label}} -->
+    <!-- <input [value]="value" type="text" class='textfield' formControlName="name"> -->
+
+
+</div>

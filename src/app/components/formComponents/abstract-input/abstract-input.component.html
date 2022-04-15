@@ -1,14 +1,24 @@
-<span [ngSwitch]="FIELD_TYPE[type]">
+<span [ngSwitch]="FIELD_TYPE[type]" [formGroup]="form">
 
-    <input-text [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_INPUT' [fieldName]="fieldName"></input-text>
-    <input-select [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='getValueId()' [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT' [fieldName]="fieldName"></input-select>
-    <lpqft-text-area [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_AREA' [fieldName]="fieldName"></lpqft-text-area>
-    <lpqft-date-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE' [fieldName]="fieldName"></lpqft-date-picker>
-    <lpqft-date-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME' [fieldName]="fieldName"></lpqft-date-time-picker>
+    <input-text [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.TEXT_INPUT' [fieldName]="fieldName"></input-text>
+    <input-select [form]="form" [entityDescriptor]="entityDescriptor" [isReadOnly]="isReadOnly" [value]='getValueId()'
+        [label]='label' *ngSwitchCase='FIELD_TYPE.SELECT' [fieldName]="fieldName"></input-select>
+    <lpqft-text-area [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.TEXT_AREA' [fieldName]="fieldName"></lpqft-text-area>
+    <lpqft-date-picker [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.DATE' [fieldName]="fieldName"></lpqft-date-picker>
+    <lpqft-date-time-picker [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.DATE_TIME' [fieldName]="fieldName"></lpqft-date-time-picker>
 
-    <lpqft-time-picker [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.DATE_TIME_ONLY' [fieldName]="fieldName"></lpqft-time-picker>
-    <lpqft-text-rich [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchCase='FIELD_TYPE.TEXT_RICH' [fieldName]="fieldName"></lpqft-text-rich>
-    
-    <span><input-text [isReadOnly]="isReadOnly"  [value]='value' [label]='label' *ngSwitchDefault></input-text></span>
+    <lpqft-time-picker [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.DATE_TIME_ONLY' [fieldName]="fieldName"></lpqft-time-picker>
+    <lpqft-text-rich [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label'
+        *ngSwitchCase='FIELD_TYPE.TEXT_RICH' [fieldName]="fieldName"></lpqft-text-rich>
+
+    <span>
+        <input-text [form]="form" [isReadOnly]="isReadOnly" [value]='value' [label]='label' *ngSwitchDefault>
+        </input-text>
+    </span>
 
 </span>

@@ -1,2 +1,2 @@
 <label for="editor">{{label}}</label>
-<textarea id="editor" (ready)="onReady($event)" [value]="value">{{value}}</textarea>
+<textarea id="editor" (ready)="onReady($event)" [value]="value" [formControlName]="fieldName">{{value}}</textarea>

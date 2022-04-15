@@ -10,6 +10,7 @@ export class InputTextComponent extends AbstractInputComponent implements OnInit
 
 
   ngOnInit(): void {
+    console.log("INIT :: " + JSON.stringify(this.form.controls))
   }
 
 }

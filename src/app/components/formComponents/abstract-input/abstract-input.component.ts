@@ -1,4 +1,5 @@
 import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 
@@ -16,19 +17,22 @@ export class AbstractInputComponent implements OnInit {
   @Input() fieldName: string;
 
   @Input() type: FIELD_TYPE;
-  @Input() isReadOnly : boolean;
+  @Input() isReadOnly: boolean;
 
-  @Input() entityDescriptor : string;
+  @Input() entityDescriptor: string;
+
+  @Input() form: FormGroup;
 
   FIELD_TYPE = FIELD_TYPE;
 
   ngOnInit(): void {
+    console.log(this.form)
   }
 
-  getValueId() : string{
-    if(this.value != null){
+  getValueId(): string {
+    if (this.value != null) {
       return this.value.id;
-    }else{
+    } else {
       return "";
     }
   }
