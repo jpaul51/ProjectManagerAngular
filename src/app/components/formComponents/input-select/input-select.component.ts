@@ -1,5 +1,5 @@
 import { Component, Inject, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { Subject } from 'rxjs';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
@@ -20,10 +20,10 @@ export class InputSelectComponent extends AbstractInputComponent implements OnIn
   filteredItems: ReplaySubject<Item[]> = new ReplaySubject<Item[]>();
 
   /** control for the selected bank */
-  public bankCtrl: FormControl = new FormControl();
+  public bankCtrl: UntypedFormControl = new UntypedFormControl();
 
   /** control for the MatSelect filter keyword */
-  public bankFilterCtrl: FormControl = new FormControl();
+  public bankFilterCtrl: UntypedFormControl = new UntypedFormControl();
 
   /** Subject that emits when the component has been destroyed. */
   protected _onDestroy = new Subject<void>();

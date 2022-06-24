@@ -1,5 +1,5 @@
 import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, UntypedFormGroup } from '@angular/forms';
 import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { FIELD_TYPE } from 'src/app/views/model/field-detail';
 
@@ -21,7 +21,7 @@ export class AbstractInputComponent implements OnInit {
 
   @Input() entityDescriptor: string;
 
-  @Input() form: FormGroup;
+  @Input() form: UntypedFormGroup;
 
   FIELD_TYPE = FIELD_TYPE;
 

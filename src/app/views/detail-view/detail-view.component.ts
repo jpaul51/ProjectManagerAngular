@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { InternalStateService, State, StateObject } from 'src/app/internalServices/internal-state-service.service';
 import { ApplicationService } from 'src/app/services/application-service.service';
 import { TranslationServiceService } from 'src/app/services/translation-service.service';
@@ -19,11 +19,11 @@ export class DetailViewComponent implements OnInit, OnChanges {
   translatedEntityName: String;
   detail: Detail;
   oneEntityFetchedData: any = {};
-  public detailForm: FormGroup = this.fb.group({});
+  public detailForm: UntypedFormGroup = this.fb.group({});
 
 
   constructor(private internalService: InternalStateService, private translationService: TranslationServiceService,
-    private appService: ApplicationService, private fb: FormBuilder) { }
+    private appService: ApplicationService, private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.translatedEntityName = this.translationService.translateKey(this.app.appEntityKey);
