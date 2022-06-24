@@ -1,2 +1,19 @@
-<vaadin-combo-box [items]="selectItems" class='textfield' [label]="label" [value]="value" [id]="fieldName"
-    [itemIdPath]="value" [formControlName]="fieldName"></vaadin-combo-box>
+<!-- <vaadin-combo-box [items]="selectItems" class='textfield' [label]="label" [value]="value" [id]="fieldName"
+    [itemIdPath]="value" [formControlName]="fieldName"></vaadin-combo-box> -->
+
+<div [formGroup]="form">
+    <label [for]="fieldName">{{label}}</label>
+
+    <mat-form-field>
+        <mat-label></mat-label>
+
+        <mat-select [formControl]="bankCtrl" placeholder="Bank" #singleSelect>
+            <mat-option>
+                <ngx-mat-select-search placeholder="search" [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let item of filteredItems | async" [value]="item.value">
+                {{item.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

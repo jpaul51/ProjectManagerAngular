@@ -1,2 +1,17 @@
-<vaadin-text-area class='textfield' [label]="label" [value]="value" [formControlName]="fieldName">
-</vaadin-text-area>
+<div [formGroup]="form">
+
+    <label class="mdc-text-field mdc-text-field--outlined">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">{{label}}</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <div>
+            <textarea rows="4" class='mdc-text-field__input  textfield input-content' [value]="value"
+                [formControlName]="fieldName"></textarea>
+        </div>
+
+    </label>
+</div>

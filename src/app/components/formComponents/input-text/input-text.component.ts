@@ -6,11 +6,8 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.less']
 })
-export class InputTextComponent extends AbstractInputComponent implements OnInit {
+export class InputTextComponent extends AbstractInputComponent {
 
 
-  ngOnInit(): void {
-    console.log("INIT :: " + JSON.stringify(this.form.controls))
-  }
 
 }

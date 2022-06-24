@@ -1,142 +1,194 @@
 /* You can add global styles to this file, and also import other style files */
 
-  html, body, div,span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
-  acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, 
-  strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
-    margin: auto;
-    padding: auto;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    color: #f5f9ff;
-    font-family: var(--lumo-font-family);
-    --lumo-secondary-text-color: #a3b2c6;
-    
-    --lumo-base-color: hsl(214, 35%, 21%);
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
+  margin: auto;
+  padding: auto;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  color: #f5f9ff;
+  font-family: var(--lumo-font-family);
+  --lumo-secondary-text-color: #a3b2c6;
 
---lumo-tint-5pct: hsla(214, 65%, 85%, 0.06);
+  --lumo-base-color: hsl(214, 35%, 21%);
 
---lumo-tint-10pct: hsla(214, 60%, 80%, 0.14);
+  --lumo-tint-5pct: hsla(214, 65%, 85%, 0.06);
 
---lumo-tint-20pct: hsla(214, 64%, 82%, 0.23);
+  --lumo-tint-10pct: hsla(214, 60%, 80%, 0.14);
 
---lumo-tint-30pct: hsla(214, 69%, 84%, 0.32);
+  --lumo-tint-20pct: hsla(214, 64%, 82%, 0.23);
 
---lumo-tint-40pct: hsla(214, 73%, 86%, 0.41);
+  --lumo-tint-30pct: hsla(214, 69%, 84%, 0.32);
 
---lumo-tint-50pct: hsla(214, 78%, 88%, 0.5);
+  --lumo-tint-40pct: hsla(214, 73%, 86%, 0.41);
 
---lumo-tint-60pct: hsla(214, 82%, 90%, 0.6);
+  --lumo-tint-50pct: hsla(214, 78%, 88%, 0.5);
 
---lumo-tint-70pct: hsla(214, 87%, 92%, 0.7);
+  --lumo-tint-60pct: hsla(214, 82%, 90%, 0.6);
 
---lumo-tint-80pct: hsla(214, 91%, 94%, 0.8);
+  --lumo-tint-70pct: hsla(214, 87%, 92%, 0.7);
 
---lumo-tint-90pct: hsla(214, 96%, 96%, 0.9);
+  --lumo-tint-80pct: hsla(214, 91%, 94%, 0.8);
 
---lumo-tint: hsl(214, 100%, 98%);
+  --lumo-tint-90pct: hsla(214, 96%, 96%, 0.9);
 
---lumo-shade-5pct: hsla(214, 0%, 0%, 0.07);
+  --lumo-tint: hsl(214, 100%, 98%);
 
---lumo-shade-10pct: hsla(214, 4%, 2%, 0.15);
+  --lumo-shade-5pct: hsla(214, 0%, 0%, 0.07);
 
---lumo-shade-20pct: hsla(214, 8%, 4%, 0.23);
+  --lumo-shade-10pct: hsla(214, 4%, 2%, 0.15);
 
---lumo-shade-30pct: hsla(214, 12%, 6%, 0.32);
+  --lumo-shade-20pct: hsla(214, 8%, 4%, 0.23);
 
---lumo-shade-40pct: hsla(214, 16%, 8%, 0.41);
+  --lumo-shade-30pct: hsla(214, 12%, 6%, 0.32);
 
---lumo-shade-50pct: hsla(214, 20%, 10%, 0.5);
+  --lumo-shade-40pct: hsla(214, 16%, 8%, 0.41);
 
---lumo-shade-60pct: hsla(214, 24%, 12%, 0.6);
+  --lumo-shade-50pct: hsla(214, 20%, 10%, 0.5);
 
---lumo-shade-70pct: hsla(214, 28%, 13%, 0.7);
+  --lumo-shade-60pct: hsla(214, 24%, 12%, 0.6);
 
---lumo-shade-80pct: hsla(214, 32%, 13%, 0.8);
+  --lumo-shade-70pct: hsla(214, 28%, 13%, 0.7);
 
---lumo-shade-90pct: hsla(214, 33%, 13%, 0.9);
+  --lumo-shade-80pct: hsla(214, 32%, 13%, 0.8);
 
---lumo-shade: hsl(214, 33%, 13%);
+  --lumo-shade-90pct: hsla(214, 33%, 13%, 0.9);
 
---lumo-contrast-5pct: var(--lumo-tint-5pct);
+  --lumo-shade: hsl(214, 33%, 13%);
 
---lumo-contrast-10pct: var(--lumo-tint-10pct);
+  --lumo-contrast-5pct: var(--lumo-tint-5pct);
 
---lumo-contrast-20pct: var(--lumo-tint-20pct);
+  --lumo-contrast-10pct: var(--lumo-tint-10pct);
 
---lumo-contrast-30pct: var(--lumo-tint-30pct);
+  --lumo-contrast-20pct: var(--lumo-tint-20pct);
 
---lumo-contrast-40pct: var(--lumo-tint-40pct);
+  --lumo-contrast-30pct: var(--lumo-tint-30pct);
 
---lumo-contrast-50pct: var(--lumo-tint-50pct);
+  --lumo-contrast-40pct: var(--lumo-tint-40pct);
 
---lumo-contrast-60pct: var(--lumo-tint-60pct);
+  --lumo-contrast-50pct: var(--lumo-tint-50pct);
 
---lumo-contrast-70pct: var(--lumo-tint-70pct);
+  --lumo-contrast-60pct: var(--lumo-tint-60pct);
 
---lumo-contrast-80pct: var(--lumo-tint-80pct);
+  --lumo-contrast-70pct: var(--lumo-tint-70pct);
 
---lumo-contrast-90pct: var(--lumo-tint-90pct);
+  --lumo-contrast-80pct: var(--lumo-tint-80pct);
 
---lumo-contrast: var(--lumo-tint);
+  --lumo-contrast-90pct: var(--lumo-tint-90pct);
 
---lumo-header-text-color: var(--lumo-contrast);
+  --lumo-contrast: var(--lumo-tint);
 
---lumo-body-text-color: var(--lumo-contrast-90pct);
+  --lumo-header-text-color: var(--lumo-contrast);
 
---lumo-secondary-text-color: var(--lumo-contrast-70pct);
+  --lumo-body-text-color: var(--lumo-contrast-90pct);
 
---lumo-tertiary-text-color: var(--lumo-contrast-50pct);
+  --lumo-secondary-text-color: var(--lumo-contrast-70pct);
 
---lumo-disabled-text-color: var(--lumo-contrast-30pct);
+  --lumo-tertiary-text-color: var(--lumo-contrast-50pct);
 
---lumo-primary-color: hsl(214, 86%, 55%);
+  --lumo-disabled-text-color: var(--lumo-contrast-30pct);
 
---lumo-primary-color-50pct: hsla(214, 86%, 55%, 0.5);
+  --lumo-primary-color: hsl(214, 86%, 55%);
 
---lumo-primary-color-10pct: hsla(214, 90%, 63%, 0.1);
+  --lumo-primary-color-50pct: hsla(214, 86%, 55%, 0.5);
 
---lumo-primary-text-color: hsl(214, 100%, 70%);
+  --lumo-primary-color-10pct: hsla(214, 90%, 63%, 0.1);
 
---lumo-primary-contrast-color: #FFF;
+  --lumo-primary-text-color: hsl(214, 100%, 70%);
 
---lumo-error-color: hsl(3, 90%, 63%);
+  --lumo-primary-contrast-color: #FFF;
 
---lumo-error-color-50pct: hsla(3, 90%, 63%, 0.5);
+  --lumo-error-color: hsl(3, 90%, 63%);
 
---lumo-error-color-10pct: hsla(3, 90%, 63%, 0.1);
+  --lumo-error-color-50pct: hsla(3, 90%, 63%, 0.5);
 
---lumo-error-text-color: hsl(3, 100%, 67%);
+  --lumo-error-color-10pct: hsla(3, 90%, 63%, 0.1);
 
---lumo-success-color: hsl(145, 65%, 42%);
+  --lumo-error-text-color: hsl(3, 100%, 67%);
 
---lumo-success-color-50pct: hsla(145, 65%, 42%, 0.5);
+  --lumo-success-color: hsl(145, 65%, 42%);
 
---lumo-success-color-10pct: hsla(145, 65%, 42%, 0.1);
+  --lumo-success-color-50pct: hsla(145, 65%, 42%, 0.5);
 
---lumo-success-text-color: hsl(145, 85%, 47%);
+  --lumo-success-color-10pct: hsla(145, 65%, 42%, 0.1);
+
+  --lumo-success-text-color: hsl(145, 85%, 47%);
 }
 
 
 .ck-content {
-	max-height:300px;
-	min-height:300px;
-	background-color:#3b5678 !important;
-	border-radius: var(--lumo-border-radius);
-	border-color:#3b5678 !important;
+  max-height: 300px;
+  min-height: 300px;
+  background-color: #3b5678 !important;
+  border-radius: var(--lumo-border-radius);
+  border-color: #3b5678 !important;
 }
 
 .input-content {
-	border-color:#37485f !important;
+  border-color: #37485f !important;
   color: #f5f9ff;
   height: 36px;
   border: 0;
-    border-top-color: currentcolor;
-    border-right-color: currentcolor;
-    border-bottom-color: currentcolor;
-    border-left-color: currentcolor;
+  border-top-color: currentcolor;
+  border-right-color: currentcolor;
+  border-bottom-color: currentcolor;
+  border-left-color: currentcolor;
   color: inherit;
   font-size: 1em;
   line-height: normal;
@@ -150,21 +202,29 @@
   box-sizing: border-box;
 }
 
-.mat-dialog-container{
+.mat-dialog-container {
   background-color: #233348;
- }
- .mat-datepicker-content{
-   background-color: #3b5678;
- }
- .mat-calendar-body-label, .mat-icon-button, .mat-focus-indicator, .mat-datepicker-content, .mat-calendar-body-cell-content, .ng-star-inserted{
-   color: white !important
- }
- .mat-button{
-   background-color: #2a7fef;
- }
+}
+
+.mat-datepicker-content {
+  background-color: #3b5678;
+}
+
+.mat-calendar-body-label,
+.mat-icon-button,
+.mat-focus-indicator,
+.mat-datepicker-content,
+.mat-calendar-body-cell-content,
+.ng-star-inserted {
+  color: white !important
+}
+
+.mat-button {
+  background-color: #2a7fef;
+}
 
 .ck-toolbar {
-  
+
   /* Overrides the border radius setting in the theme. */
   --ck-border-radius: 4px;
 
@@ -277,3 +337,11 @@
 
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-select-arrow {
+  color: white
+}
+
+.mat-form-field-appearance-legacy {
+  .input-content
+}

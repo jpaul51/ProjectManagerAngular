@@ -32,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { CustomButtonComponent } from './components/custom-button/custom-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 registerLocaleData(localeFr);
 
@@ -74,7 +76,9 @@ const routes: Routes = [
     NgxMatTimepickerModule,
     BrowserAnimationsModule,
     NgxMatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgxMatSelectSearchModule
 
 
 

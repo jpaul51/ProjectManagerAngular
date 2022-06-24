@@ -1,8 +1,19 @@
 <div [formGroup]="form">
-    <vaadin-text-field class='textfield' [label]="label" [value]="value" [formControlName]="fieldName">
-    </vaadin-text-field>
+    <!-- <vaadin-text-field class='textfield' [label]="label" [value]="value" [formControlName]="fieldName">
+    </vaadin-text-field> -->
     <!-- {{label}} -->
     <!-- <input [value]="value" type="text" class='textfield' formControlName="name"> -->
-
+    <label class="mdc-text-field mdc-text-field--outlined">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">{{label}}</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <!-- <label [for]="fieldName">{{label}}</label> -->
+        <input type="text" class="mdc-text-field__input textfield input-content" part="value" matInput
+            aria-labelledby="my-label-id" [value]="value" [formControlName]="fieldName">
+    </label>
 
 </div>
