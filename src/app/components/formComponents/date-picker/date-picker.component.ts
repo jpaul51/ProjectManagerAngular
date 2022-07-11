@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DateFormatterService } from 'src/app/internalServices/date-formatter-service.service';
 import { AbstractInputComponent } from '../abstract-input/abstract-input.component';
 
 @Component({
@@ -8,7 +9,14 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 })
 export class DatePickerComponent extends AbstractInputComponent implements OnInit, OnChanges {
 
+  picker: any
+
+  constructor(protected dateFormatterService: DateFormatterService) {
+    super();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
+    this.value = this.dateFormatterService.formatDateTimeForField(this.value);
   }
 
   ngOnInit(): void {

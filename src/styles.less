@@ -338,10 +338,37 @@ caption {
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.mat-select-arrow {
-  color: white
+
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #e3eaf2;
 }
+
 
 .mat-form-field-appearance-legacy {
   .input-content
 }
+
+.mat-select-arrow {
+  color: #e3eaf2
+}
+
+.mat-select-arrow:focus {
+  color: #e3eaf2
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #55749d;
+}
+
+
+.mat-form-field-outline,
+.mat-form-field-empty.mat-form-field-label,
+.mat-form-field-label,
+.mat-form-field-underline,
+.mat-input-element,
+::placeholder {
+  color: white !important;
+}
+
+@label-padding: 7px;

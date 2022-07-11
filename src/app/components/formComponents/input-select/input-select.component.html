@@ -2,18 +2,34 @@
     [itemIdPath]="value" [formControlName]="fieldName"></vaadin-combo-box> -->
 
 <div [formGroup]="form">
-    <label [for]="fieldName">{{label}}</label>
 
+    <p>
+        <label class="mdc-text-field mdc-text-field--outlined">
+            <span class="mdc-notched-outline">
+                <span class="mdc-notched-outline__leading"></span>
+                <span class="mdc-notched-outline__notch">
+                    <span class="mdc-floating-label" id="my-label-id">{{label}}</span>
+                </span>
+                <span class="mdc-notched-outline__trailing"></span>
+            </span>
+            <!-- <label [for]="fieldName">{{label}}</label> -->
+        </label>
+    </p>
     <mat-form-field>
+
         <mat-label></mat-label>
 
         <mat-select [formControl]="bankCtrl" placeholder="Bank" #singleSelect>
             <mat-option>
-                <ngx-mat-select-search placeholder="search" [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+                <ngx-mat-select-search placeholderLabel="search" [formControl]="bankFilterCtrl">
+                </ngx-mat-select-search>
             </mat-option>
             <mat-option *ngFor="let item of filteredItems | async" [value]="item.value">
                 {{item.label}}
             </mat-option>
         </mat-select>
     </mat-form-field>
+
+
+
 </div>
